@@ -32,4 +32,20 @@ u1 = User.create(
 }
 )
 
+u2 = User.create(
+{
+  email: "user2@email.com",
+  password: "password",
+  password_confirmation: "password"
+}
+)
+
+c2 = Course.create(
+{
+  name: 'test course 2'
+}
+)
+
 u1.courses << c1
+u1.courses << c2
+u2.courses << c1
