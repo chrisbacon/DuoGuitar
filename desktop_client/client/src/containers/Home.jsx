@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DuoGuitar extends React.Component {
+class Home extends React.Component {
     constructor(props) {
         super(props);
 
@@ -39,4 +39,4 @@ class DuoGuitar extends React.Component {
     }
 }
 
-export default DuoGuitar;
+export default Home;
