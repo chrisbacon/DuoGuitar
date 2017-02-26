@@ -1,9 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import DuoGuitar from './containers/duoguitar.jsx';
 
 window.onload = function () {
   ReactDOM.render(
-    <h1>App Started</h1>,
+    <DuoGuitar/>,
     document.getElementById('app')
   );
 }
