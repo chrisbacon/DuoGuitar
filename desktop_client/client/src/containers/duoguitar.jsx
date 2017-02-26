@@ -41,7 +41,7 @@ class DuoGuitar extends React.Component {
     render () {
 
         if (this.state.selectedCourse) {
-            return(<div>{JSON.stringify(this.state.courses)}</div>
+            return(<div>{this.state.selectedCourse} was selected!!</div>
                 )
         } else {
             return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
