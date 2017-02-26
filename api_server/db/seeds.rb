@@ -10,17 +10,60 @@ c1 = Course.create(
 
 l1 = Lesson.create(
 {
-  name: 'test lesson',
+  name: 'c1 test lesson 1',
   course: c1,
   position: 1
 }
 )
 
+l2 = Lesson.create(
+{
+  name: 'c1 test lesson 2',
+  course: c1,
+  position: 2
+}
+)
+
+l3 = Lesson.create(
+{
+  name: 'c1 test lesson 3',
+  course: c1,
+  position: 3
+}
+)
+
 e1 = Exercise.create(
 {
-  name: 'test exercise',
+  name: 'c1 l1 test exercise 1',
   lesson: l1,
   position: 1,
+  content: "Some Content"
+}
+)
+
+e2 = Exercise.create(
+{
+  name: 'c1 l1 test exercise 2',
+  lesson: l1,
+  position: 2,
+  content: "Some Content"
+}
+)
+
+e3 = Exercise.create(
+{
+  name: 'c1 l2 test exercise 1',
+  lesson: l2,
+  position: 1,
+  content: "Some Content"
+}
+)
+
+e4 = Exercise.create(
+{
+  name: 'c1 l2 test exercise 2',
+  lesson: l2,
+  position: 2,
   content: "Some Content"
 }
 )
