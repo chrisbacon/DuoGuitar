@@ -20,7 +20,8 @@ e1 = Exercise.create(
 {
   name: 'test exercise',
   lesson: l1,
-  position: 1
+  position: 1,
+  content: "Some Content"
 }
 )
 
