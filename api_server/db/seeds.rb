@@ -23,3 +23,13 @@ e1 = Exercise.create(
   position: 1
 }
 )
+
+u1 = User.create(
+{
+  email: "user@email.com",
+  password: "password",
+  password_confirmation: "password"
+}
+)
+
+u1.courses << c1
