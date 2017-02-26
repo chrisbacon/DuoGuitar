@@ -30,3 +30,4 @@ To make a web app that allows users to track their guitar practice, and provide 
 - App should generate practice lessons based on user’s lesson history
 - Guitar tuner
 - Admin page to add, delete lessons.
+- .
