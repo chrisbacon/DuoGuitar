@@ -1,12 +1,16 @@
 import React from 'react';
+import SubComponentMenu from '../components/subComponentMenu.jsx'
 
 class DuoGuitar extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            courses: null
+            courses: null,
+            selectedCourse: null
         }
+
+        this.selectCourse = this.selectCourse.bind(this);
     }
 
     componentDidMount(){
@@ -30,12 +34,20 @@ class DuoGuitar extends React.Component {
       request.send(null)
     }
 
+    selectCourse(course) {
+        this.setState({selectedCourse: course})
+    }
+
     render () {
 
+        if (this.state.selectedCourse) {
+            return(<div>{JSON.stringify(this.state.courses)}</div>
+                )
+        } else {
+            return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
+        }
 
-
-        return(<div>{JSON.stringify(this.state.courses)}</div>
-            )
+        
     }
 }
 
