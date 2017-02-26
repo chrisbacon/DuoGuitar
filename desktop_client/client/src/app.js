@@ -1,18 +1,8 @@
-// var React = require('react');
-// var ReactDOM = require('react-dom');
-// import DuoGuitar from './containers/duoguitar.jsx';
-
-// window.onload = function () {
-//   ReactDOM.render(
-//     <DuoGuitar/>,
-//     document.getElementById('app')
-//   );
-// }
-
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Home from './containers/Home'
+import Course from './components/course'
+import Lesson from './components/lesson'
 import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 class App extends React.Component{
@@ -23,6 +13,9 @@ class App extends React.Component{
         <Route path='/' component={Home}>
           <IndexRoute component={Home} />
         </Route>
+        <Route path="home" component={Home}/>
+        <Route path="course" component={Course}/>
+        <Route path="lesson" component={Lesson}/>
       </Router>
     )
   }
@@ -30,5 +23,3 @@ class App extends React.Component{
 
 
 ReactDOM.render(<App />, document.getElementById('app'))
-
-// <Route path='/shows' component={Listing} />
