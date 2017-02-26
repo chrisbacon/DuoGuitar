@@ -5,8 +5,13 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            courses: null
+            courses: []
         }
+    }
+
+    showCourse(event) {
+      console.log(event.target.id)
+
     }
 
     componentDidMount(){
@@ -30,11 +35,16 @@ class Home extends React.Component {
       request.send(null)
     }
 
-    render () {
+    render() {
 
+        return(
 
-
-        return(<div>{JSON.stringify(this.state.courses)}</div>
+            <div>
+              {this.state.courses.map(function(course) {
+                console.log(this)
+                return <button id={course.id} key={course.id} onClick={this.showCourse.bind(this)}>{course.name}</button>
+              }.bind(this))}
+            </div>
             )
     }
 }
