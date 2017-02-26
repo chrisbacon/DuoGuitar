@@ -1,5 +1,6 @@
 import React from 'react';
 import SubComponentMenu from '../components/subComponentMenu.jsx'
+import Course from '../components/Course.jsx'
 
 class DuoGuitar extends React.Component {
     constructor(props) {
@@ -41,7 +42,7 @@ class DuoGuitar extends React.Component {
     render () {
 
         if (this.state.selectedCourse) {
-            return(<div>{this.state.selectedCourse.name} was selected!!</div>
+            return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}/>
                 )
         } else {
             return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
