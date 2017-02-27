@@ -47,26 +47,36 @@ export default class SignUp extends Component {
     }
   }
 
-  handleOnChangeEmail(event) {
-    this.setState({email: event.target.value})
+  handleOnChangeEmail(text) {
+    this.setState({email: text})
   }
 
-  handleOnChangePassword(event) {
-    this.setState({password: event.target.value})
+  handleOnChangePassword(text) {
+    this.setState({password: text})
   }
 
-  handleOnChangePassConf(event) {
-    this.setState({passwordConfirmation: event.target.value})
+  handleOnChangePassConf(text) {
+    this.setState({passwordConfirmation: text})
   }
 
   render() {
     return (
       <View onSubmit={this.signUp} className='login-form'>
-        <TextInput onChangeText={this.handleOnChangeEmail} value="Email" />
-        <TextInput onChangeText={this.handleOnChangePassword}  value="Password" />
-        <TextInput onChangeText={this.handleOnChangePassConf} value="Password Confirmation"/>
+        <Text>Email</Text>
+        <TextInput style={styles.input} onChangeText={this.handleOnChangeEmail}/>
+        <Text>Password</Text>
+        <TextInput style={styles.input} onChangeText={this.handleOnChangePassword}/>
+        <Text>Confirm password</Text>
+        <TextInput style={styles.input} onChangeText={this.handleOnChangePassConf}/>
         <Button title="Sign Up" onPress={this.signUp}>Sign Up</Button>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 20,
+    backgroundColor: 'beige',
+  },
+});

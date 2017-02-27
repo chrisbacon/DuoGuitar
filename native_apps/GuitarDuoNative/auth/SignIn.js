@@ -57,11 +57,18 @@ export default class SignIn extends Component {
     return (
       <View  className='login-form' >
         <Text>Email</Text>
-        <TextInput onChangeText={this.handleOnChangeEmail}/>
+        <TextInput style={styles.input} onChangeText={this.handleOnChangeEmail}/>
         <Text>Password</Text>
-        <TextInput onChangeText={this.handleOnChangePassword}/>
+        <TextInput style={styles.input} onChangeText={this.handleOnChangePassword}/>
         <Button title="Sign In" onPress={this.signIn}>Sign In</Button>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 20,
+    backgroundColor: 'beige',
+  },
+});

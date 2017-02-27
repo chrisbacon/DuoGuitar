@@ -41,7 +41,7 @@ export default class DuoGuitar extends Component {
   }
 
   filterCoursesByEnrolled(){
-    var userCourses = this.props.user.courses;
+    var userCourses = this.props.user.courses || [];
     var courses = this.state.courses;
     for(var i=courses.length-1; i>=0; i--) {
       for (var y=0; y<(userCourses.length); y++){
