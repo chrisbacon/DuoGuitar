@@ -1,6 +1,7 @@
 Course.destroy_all
 Lesson.destroy_all
 Exercise.destroy_all
+SubscribedCourse.destroy_all
 
 c1 = Course.create(
 {
@@ -16,13 +17,13 @@ l1 = Lesson.create(
 }
 )
 
-e1 = Exercise.create(
-{
-  name: 'test exercise',
-  lesson: l1,
-  position: 1,
-  content: "Some Content"
-}
+Exercise.create(
+  {
+    name: 'test exercise',
+    lesson: l1,
+    position: 1,
+    content: "Some Content"
+  }
 )
 
 u1 = User.create(
@@ -50,3 +51,4 @@ c2 = Course.create(
 u1.courses << c1
 u1.courses << c2
 u2.courses << c1
+
