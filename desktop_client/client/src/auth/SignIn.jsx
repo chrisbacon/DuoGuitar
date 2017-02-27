@@ -28,8 +28,9 @@ class SignIn extends React.Component {
     request.setRequestHeader("Content-type", "application/json");
     request.withCredentials = true;
     request.onload = () => {
-      if (request.status === 201) {
+      if (request.status === 200) {
         let user = JSON.parse(request.responseText);
+        console.log("user from signin api call: ", user)
         this.props.onSignIn(user);
       }
     }

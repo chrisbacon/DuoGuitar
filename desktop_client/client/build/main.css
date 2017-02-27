@@ -17,7 +17,15 @@ button{
   width: 150px;
   border-radius: 10px;
   font-size: 20px;
-  background-color: tomato;
+  background-color: white;
+}
+
+button.enrolled{
+  padding: 10px;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: green;
 }
 
 button:hover{
@@ -53,5 +61,5 @@ button:hover{
 }
 
 .countries-box{
-  
+
 }
