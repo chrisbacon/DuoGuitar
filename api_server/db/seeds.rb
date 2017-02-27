@@ -21,7 +21,7 @@ Exercise.create(
   {
     name: 'test exercise',
     lesson: l1,
-    position: 1,
+    position: 2,
     content: "Some Content"
   }
 )
@@ -30,7 +30,7 @@ Exercise.create(
   {
     name: 'test exercise',
     lesson: l1,
-    position: 2,
+    position: 4,
     content: "Some more content"
   }
 )
@@ -40,6 +40,23 @@ Exercise.create(
     name: 'test exercise',
     lesson: l1,
     position: 3,
+    content: "Even more content"
+  }
+)
+Exercise.create(
+  {
+    name: 'test exercise',
+    lesson: l1,
+    position: 7,
+    content: "Even more content"
+  }
+)
+
+Exercise.create(
+  {
+    name: 'test exercise',
+    lesson: l1,
+    position: 1,
     content: "Even more content"
   }
 )
