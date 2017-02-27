@@ -12,11 +12,13 @@ class LoginBox extends React.Component {
     this.state = {
       currentUser: null
     }
-    this.setUser = this.setUser.bind(this)
+    this.setUser = this.setUser.bind(this);
+    this.requester = new Requester();
   }
 
   setUser(user){
-    this.setState({currentUser:user, courselist:[]})
+    console.log("user: ", user)
+    this.setState({currentUser:user, courselist:[]});
   }
 
   fetchUser(){
@@ -52,7 +54,7 @@ class LoginBox extends React.Component {
         mainDiv = <div>
           <h4> Welcome {this.state.currentUser.email}</h4>
           <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
-          <DuoGuitar></DuoGuitar>
+          <DuoGuitar user={this.state.currentUser}></DuoGuitar>
         </div>
       }
       return (

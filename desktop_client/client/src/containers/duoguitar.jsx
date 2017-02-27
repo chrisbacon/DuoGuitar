@@ -9,6 +9,7 @@ class DuoGuitar extends React.Component {
     this.requester = new Requester()
 
     this.state = {
+      user: props.user,
       courses: [],
       selectedCourse: null
     }
@@ -18,6 +19,7 @@ class DuoGuitar extends React.Component {
   }
 
   componentDidMount(){
+    console.log(this.state.user)
     this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/courses', type: 'GET', body: '', callback: this.handleRequest})
   }
 
