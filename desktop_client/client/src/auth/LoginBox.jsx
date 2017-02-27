@@ -14,6 +14,7 @@ class LoginBox extends React.Component {
     }
     this.setUser = this.setUser.bind(this);
     this.requester = new Requester();
+    this.userFetched = this.userFetched.bind(this);
   }
 
   setUser(user){
@@ -23,21 +24,16 @@ class LoginBox extends React.Component {
 
   fetchUser(){
     console.log("fetching user");
-    const request = new XMLHttpRequest();
-    request.open("GET", "http://localhost:5000/users.json");
-    request.setRequestHeader("Content-type", "application/json");
-    request.withCredentials = true;
+    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/users.json', type: 'GET', body: '', callback: this.userFetched})
+  }
 
-    request.onload = () => {
-      if (request.status === 200) {
-        console.log("request.responseText" + request.responseText);
-        const receivedUser = JSON.parse(request.responseText);
-        this.setUser(receivedUser);
-      } else if (request.status === 401) {
-        this.setUser(null);
-      }
+  userFetched(responseObject){
+    if (!responseObject.error){
+      var receivedUser = responseObject.response;
+      this.setUser(receivedUser);
+    } else {
+      this.setUser(null);
     }
-    request.send(null);
   }
 
   componentDidMount(){
@@ -45,23 +41,23 @@ class LoginBox extends React.Component {
   }
 
   render () {
-      var mainDiv = <div>
-        <h4> Please Sign In/Up </h4>
-        <SignIn url={this.props.url + "users/sign_in.json"} onSignIn={this.setUser}></SignIn>
-        <SignUp url={this.props.url + "users.json"} onSignUp={this.setUser}></SignUp>
+    var mainDiv = <div>
+      <h4> Please Sign In/Up </h4>
+      <SignIn url={this.props.url + "users/sign_in.json"} onSignIn={this.setUser}></SignIn>
+      <SignUp url={this.props.url + "users.json"} onSignUp={this.setUser}></SignUp>
+    </div>
+    if(this.state.currentUser){
+      mainDiv = <div>
+        <h4> Welcome {this.state.currentUser.email}</h4>
+        <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
+        <DuoGuitar user={this.state.currentUser}></DuoGuitar>
       </div>
-      if(this.state.currentUser){
-        mainDiv = <div>
-          <h4> Welcome {this.state.currentUser.email}</h4>
-          <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
-          <DuoGuitar user={this.state.currentUser}></DuoGuitar>
-        </div>
-      }
-      return (
-        <div>
-          { mainDiv }
-        </div>
-      )
+    }
+    return (
+      <div>
+        { mainDiv }
+      </div>
+    )
   }
 }
 
