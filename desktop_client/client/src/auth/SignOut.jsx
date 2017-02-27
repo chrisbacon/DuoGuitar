@@ -7,11 +7,11 @@ class SignOut extends React.Component{
     super()
     this.signOut = this.signOut.bind(this)
   }
-  
+
   signOut(event){
     event.preventDefault();
     const request = new XMLHttpRequest();
-    request.open("DELETE", this.props.url);
+    request.open("DELETE", "http://localhost:5000/users/sign_out");
     request.setRequestHeader("Content-type", "application/json");
     request.withCredentials = true;
 
@@ -28,7 +28,6 @@ class SignOut extends React.Component{
     return (
        <div>
         <button onClick={this.signOut}>Sign Out</button>
-        <Link className='shows-link' to='/shows'>View Shows</Link>
       </div>
     )
   }

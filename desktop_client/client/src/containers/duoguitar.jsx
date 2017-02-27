@@ -1,38 +1,33 @@
 import React from 'react';
 import SubComponentMenu from '../components/subComponentMenu.jsx'
 import Course from '../components/Course.jsx'
+import Requester from '../components/Requester.jsx'
 
 class DuoGuitar extends React.Component {
     constructor(props) {
         super(props);
+        this.requester = new Requester()
 
         this.state = {
-            courses: null,
+            courses: [],
             selectedCourse: null
         }
 
         this.selectCourse = this.selectCourse.bind(this);
+        this.handleRequest = this.handleRequest.bind(this);
     }
 
     componentDidMount(){
-      var url = 'http://localhost:5000/api/courses'
-      var request = new XMLHttpRequest()
-      request.open('GET', url)
+      console.log(this)
+      console.log(this.requester)
+      this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/courses', type: 'GET', body: '', callback: this.handleRequest})
+    }
 
-      request.setRequestHeader('Content-Type', "application/json")
-      // request.withCredentials = true
-
-      request.onload = () => {
-         if(request.status === 200){
-          console.log("request: ", request.responseText)
-          var data = JSON.parse(request.responseText)
-          this.setState( { courses: data } )
-         } else{
-          console.log("Uh oh you're not logged in!")
-          browserHistory.goBack()
-         }
-      }
-      request.send(null)
+    handleRequest(responseObject){
+      console.log(this)
+      console.log(responseObject)
+      this.setState( { courses: responseObject.response } )
+      console.log(this.state)
     }
 
     selectCourse(course) {
@@ -40,7 +35,7 @@ class DuoGuitar extends React.Component {
     }
 
     render () {
-
+      console.log('selectedCourse ', this.state.selectedCourse)
         if (this.state.selectedCourse) {
             return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}/>
                 )
@@ -48,7 +43,7 @@ class DuoGuitar extends React.Component {
             return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
         }
 
-        
+
     }
 }
 

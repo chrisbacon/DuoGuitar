@@ -9,8 +9,8 @@ class SignUp extends React.Component {
     this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
     this.handleOnChangePassConf = this.handleOnChangePassConf.bind(this)
     this.state = {
-      email:"", 
-      password:"", 
+      email:"",
+      password:"",
       passwordConfirmation:""
     }
   }
@@ -18,10 +18,10 @@ class SignUp extends React.Component {
   signUp(event){
     event.preventDefault();
     const request = new XMLHttpRequest();
-    request.open("POST", this.props.url);
+    request.open("POST", "http://localhost:5000/users/sign_up");
     request.setRequestHeader("Content-type", "application/json");
     request.withCredentials = true;
-    
+
     request.onload = () => {
       if (request.status === 201) {
         const user = JSON.parse(request.responseText);
@@ -36,7 +36,7 @@ class SignUp extends React.Component {
         }
       }
       request.send(JSON.stringify(data));
-    
+
   }
 
   handleOnChangeEmail(event) {
@@ -50,7 +50,7 @@ class SignUp extends React.Component {
   handleOnChangePassConf(event) {
     this.setState({passwordConfirmation: event.target.value})
   }
-  
+
   render() {
     return (
       <form onSubmit={this.signUp} className='login-form'>

@@ -1,7 +1,9 @@
 import React from 'react'
 import SignIn from './SignIn'
-import SignUp from './SignUp' 
+import SignUp from './SignUp'
 import SignOut from './SignOut'
+import Requester from '../components/requester'
+import DuoGuitar from '../containers/duoguitar'
 
 class LoginBox extends React.Component {
 
@@ -20,10 +22,10 @@ class LoginBox extends React.Component {
   fetchUser(){
     console.log("fetching user");
     const request = new XMLHttpRequest();
-    request.open("GET", this.props.url + "users.json");
+    request.open("GET", "http://localhost:5000/users.json");
     request.setRequestHeader("Content-type", "application/json");
     request.withCredentials = true;
-    
+
     request.onload = () => {
       if (request.status === 200) {
         console.log("request.responseText" + request.responseText);
@@ -50,13 +52,14 @@ class LoginBox extends React.Component {
         mainDiv = <div>
           <h4> Welcome {this.state.currentUser.email}</h4>
           <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
+          <DuoGuitar></DuoGuitar>
         </div>
       }
       return (
         <div>
           { mainDiv }
         </div>
-      ) 
+      )
   }
 }
 

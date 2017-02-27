@@ -8,7 +8,7 @@ class SignIn extends React.Component {
     this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
     this.signIn = this.signIn.bind(this)
     this.state = {
-      email:"", 
+      email:"",
       password:""
     }
   }
@@ -24,7 +24,7 @@ class SignIn extends React.Component {
   signIn(event){
     event.preventDefault();
     const request = new XMLHttpRequest();
-    request.open("POST", this.props.url);
+    request.open("POST", "http://localhost:5000/users/sign_in.json");
     request.setRequestHeader("Content-type", "application/json");
     request.withCredentials = true;
     request.onload = () => {
@@ -41,7 +41,7 @@ class SignIn extends React.Component {
     }
     request.send(JSON.stringify(data));
   }
-  
+
   render() {
     return (
       <form  className='login-form' >
