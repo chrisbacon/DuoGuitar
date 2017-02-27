@@ -1,12 +1,15 @@
 import React from 'react'
+import Requester from '../components/requester'
 
 class SignIn extends React.Component {
 
   constructor(props){
     super(props)
     this.handleOnChangeEmail = this.handleOnChangeEmail.bind(this)
-    this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
-    this.signIn = this.signIn.bind(this)
+    this.handleOnChangePassword = this.handleOnChangePassword.bind(this);
+    this.signIn = this.signIn.bind(this);
+    this.userSignedIn = this.userSignedIn.bind(this);
+    this.requester = new Requester();
     this.state = {
       email:"",
       password:""
@@ -23,24 +26,23 @@ class SignIn extends React.Component {
 
   signIn(event){
     event.preventDefault();
-    const request = new XMLHttpRequest();
-    request.open("POST", "http://localhost:5000/users/sign_in.json");
-    request.setRequestHeader("Content-type", "application/json");
-    request.withCredentials = true;
-    request.onload = () => {
-      if (request.status === 200) {
-        let user = JSON.parse(request.responseText);
-        console.log("user from signin api call: ", user)
-        this.props.onSignIn(user);
-      }
-    }
-    const data = {
+    const credentials = {
       user: {
         email: this.state.email,
         password: this.state.password
       }
     }
-    request.send(JSON.stringify(data));
+    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/users/sign_in.json', type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
+  }
+
+  userSignedIn(responseObject){
+    if (!responseObject.error){
+      let user = responseObject.response;
+      console.log("user from signin api call: ", user)
+      this.props.onSignIn(user);
+    } else {
+      console.log("sign-in failed");
+    }
   }
 
   render() {
