@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
                 only: [:id, :name, :exercises, :position], 
                 include: {
                     exercises: {
-                        only: [:id, :position, :content]
+                        only: [:name, :id, :position, :content]
                     }
                 }
             }
