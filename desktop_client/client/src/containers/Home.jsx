@@ -43,7 +43,7 @@ render() {
     if(this.state.currentUser){
         return(
             <div>
-                <nav>
+                <nav className='navbar'>
                     <h4> Welcome {this.state.currentUser.email}</h4>
                     <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
                 </nav>

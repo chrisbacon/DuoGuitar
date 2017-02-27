@@ -24,9 +24,7 @@ class SignOut extends React.Component{
 
   render() {
     return (
-      <div class='navbar'>
         <button onClick={this.signOut}>Sign Out</button>
-      </div>
     )
   }
 }
