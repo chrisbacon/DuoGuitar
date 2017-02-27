@@ -4,47 +4,42 @@ import Course from '../components/Course.jsx'
 import Requester from '../components/Requester.jsx'
 
 class DuoGuitar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.requester = new Requester()
+  constructor(props) {
+    super(props);
+    this.requester = new Requester()
 
-        this.state = {
-            courses: [],
-            selectedCourse: null
-        }
-
-        this.selectCourse = this.selectCourse.bind(this);
-        this.handleRequest = this.handleRequest.bind(this);
+    this.state = {
+      courses: [],
+      selectedCourse: null
     }
 
-    componentDidMount(){
-      console.log(this)
-      console.log(this.requester)
-      this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/courses', type: 'GET', body: '', callback: this.handleRequest})
-    }
+    this.selectCourse = this.selectCourse.bind(this);
+    this.handleRequest = this.handleRequest.bind(this);
+  }
 
-    handleRequest(responseObject){
-      console.log(this)
-      console.log(responseObject)
+  componentDidMount(){
+    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/courses', type: 'GET', body: '', callback: this.handleRequest})
+  }
+
+  handleRequest(responseObject){
+    if (!responseObject.error){
       this.setState( { courses: responseObject.response } )
-      console.log(this.state)
     }
+  }
 
-    selectCourse(course) {
-        this.setState({selectedCourse: course})
-    }
+  selectCourse(course) {
+    this.setState({selectedCourse: course})
+  }
 
-    render () {
-      console.log('selectedCourse ', this.state.selectedCourse)
-        if (this.state.selectedCourse) {
-            return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}/>
-                )
-        } else {
-            return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
-        }
-
-
-    }
+  render () {
+    console.log('selectedCourse ', this.state.selectedCourse)
+    if (this.state.selectedCourse) {
+      return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}/>
+    )
+  } else {
+    return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
+  }
+}
 }
 
 export default DuoGuitar;
