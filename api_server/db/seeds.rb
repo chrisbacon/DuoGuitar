@@ -17,6 +17,14 @@ l1 = Lesson.create(
 }
 )
 
+l2 = Lesson.create(
+{
+  name: 'media test lesson',
+  course: c1,
+  position: 2
+}
+)
+
 Exercise.create(
   {
     name: 'test exercise',
@@ -58,6 +66,21 @@ Exercise.create(
     lesson: l1,
     position: 1,
     content: "Even more content"
+  }
+)
+
+media_exercise = Exercise.create(
+    name: 'media test exercise',
+    lesson: l2,
+    position: 5,
+    content: "Look at all this lovely content"
+  )
+
+Medium.create(
+  {
+    exercise: media_exercise,
+    source: "https://www.youtube.com/embed/KSiv6wOBG8c",
+    source_type: "video"
   }
 )
 
