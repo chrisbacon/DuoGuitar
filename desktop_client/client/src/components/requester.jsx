@@ -7,7 +7,7 @@ class Requester{
     var request = new XMLHttpRequest()
     request.open(params.type, params.url)
     request.setRequestHeader('Content-Type', "application/json")
-    // request.withCredentials = true
+    request.withCredentials = true
 
     request.onload = () => {
       if(request.status === params.codeDesired){
@@ -18,7 +18,11 @@ class Requester{
         params.callback({code: request.status, error: true})
       }
     }
-    request.send(null)
+    if(params.data){
+      request.send(JSON.stringify(params.data))
+    } else {
+      request.send(null)
+    }
   }
 }
 
