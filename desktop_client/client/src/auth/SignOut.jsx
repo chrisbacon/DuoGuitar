@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Requester from '../components/requester'
 
 class SignOut extends React.Component{
 
   constructor(){
     super()
+    this.requester = new Requester();
     this.signOut = this.signOut.bind(this)
+    this.userSignedOut = this.userSignedOut.bind(this)
   }
 
   signOut(event){

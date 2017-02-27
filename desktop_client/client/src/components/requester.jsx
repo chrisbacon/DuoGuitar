@@ -11,7 +11,10 @@ class Requester{
 
     request.onload = () => {
       if(request.status === params.codeDesired){
-        var responseJson = JSON.parse(request.responseText)
+        var responseJson = {}
+        if(request.responseText){
+          var responseJson = JSON.parse(request.responseText)
+        }
         params.callback({code: request.status, error: false, response: responseJson})
       } else{
         console.log("Error")
