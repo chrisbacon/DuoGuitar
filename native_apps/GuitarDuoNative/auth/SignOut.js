@@ -20,7 +20,7 @@ class SignOut extends Component{
 
   signOut(event){
     event.preventDefault();
-    this.requester.makeRequest({codeDesired: 204, url: "http://localhost:5000/users/sign_out", type: 'DELETE', body: '', callback: this.userSignedOut})
+    this.requester.makeRequest({codeDesired: 204, url: this.props.url, type: 'DELETE', body: '', callback: this.userSignedOut})
   }
 
   userSignedOut(responseObject){

@@ -30,7 +30,7 @@ export default class Home extends Component {
 
   fetchUser(){
     console.log("fetching user");
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/users.json', type: 'GET', body: '', callback: this.userFetched})
+    this.requester.makeRequest({codeDesired: 200, url: this.props.url + '/users.json', type: 'GET', body: '', callback: this.userFetched})
   }
 
   userFetched(responseObject){
@@ -52,13 +52,14 @@ export default class Home extends Component {
       return(
         <View>
           <View className='navbar'>
-            <text> Welcome {this.state.currentUser.email}</text>
+            <Text> Welcome {this.state.currentUser.email}</Text>
             <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
           </View>
-          <DuoGuitar user={this.state.currentUser}/>
+          <DuoGuitar url={this.props.url} user={this.state.currentUser}></DuoGuitar>
         </View>
       )
     }
-    return <LoginBox setUser={this.setUser} url="http://localhost:5000/" />
+
+    return <LoginBox setUser={this.setUser} url={this.props.url} />
   }
 }

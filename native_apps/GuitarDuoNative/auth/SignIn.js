@@ -40,7 +40,7 @@ export default class SignIn extends Component {
         password: this.state.password
       }
     }
-    this.requester.makeRequest({codeDesired: 200, url: 'http://10.0.2.2:5000/users/sign_in.json', type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
+    this.requester.makeRequest({codeDesired: 200, url: this.props.url, type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
   }
 
   userSignedIn(responseObject){

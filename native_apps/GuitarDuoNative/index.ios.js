@@ -12,13 +12,12 @@ import {
   View
 } from 'react-native';
 import Home from './containers/home';
-import DuoGuitar from './containers/duoguitar';
 
 export default class GuitarDuoNative extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Home></Home>
+        <Home url="http://localhost:5000/"></Home>
       </View>
     );
   }

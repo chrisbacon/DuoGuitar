@@ -27,10 +27,13 @@ export default class DuoGuitar extends Component {
   }
 
   componentDidMount(){
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/courses', type: 'GET', body: '', callback: this.populateCourses})
+    this.requester.makeRequest({codeDesired: 200, url: this.props.url + 'api/courses', type: 'GET', body: '', callback: this.populateCourses
+    })
   }
 
   populateCourses(responseObject){
+    console.log("got this far")
+    console.log(responseObject)
     if (!responseObject.error){
       this.setState( { courses: responseObject.response } )
     }

@@ -1,4 +1,4 @@
-class Requester{
+export default class Requester{
   constructor() {
   }
 
@@ -12,6 +12,7 @@ class Requester{
 
     request.onload = () => {
       if(request.status === params.codeDesired){
+        console.log("request succeeded")
         var responseJson = {}
         if(request.responseText){
           var responseJson = JSON.parse(request.responseText)
@@ -31,5 +32,3 @@ class Requester{
     }
   }
 }
-
-export default Requester

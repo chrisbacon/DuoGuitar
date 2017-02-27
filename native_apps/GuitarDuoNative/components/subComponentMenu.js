@@ -14,10 +14,9 @@ export default class SubComponentMenu extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(event) {
-    event.preventDefault();
-    const selectedItem = this.props.items[event.target.value]
-
+  handleClick(index) {
+    console.log("index", index)
+    const selectedItem = this.props.items[index]
     console.log(selectedItem)
     this.props.selectItem(selectedItem)
   }
@@ -28,9 +27,20 @@ export default class SubComponentMenu extends Component {
       console.log("items: ", this.props.items)
       const items = this.props.items.map(function(item, index) {
         if (item.enrolled === true) {
-          return <Button className="enrolled" onClick={this.handleClick} value={index} key={index}>{item.name}</Button>
+          return <Button
+            title={item.name}
+            className="enrolled"
+            onPress={() => this.handleClick(index)}
+            value={index}
+            key={index}>{item.name}
+          </Button>
         } else {
-          return <Button className="not-enrolled" onClick={this.handleClick} value={index} key={index}>{item.name}</Button>
+          return <Button
+            title={item.name}
+            className="not-enrolled"
+            onPress={() => this.handleClick(index)}
+            value={index}
+            key={index}>{item.name}</Button>
         }
       }.bind(this));
       return (<View>{items}</View>)
