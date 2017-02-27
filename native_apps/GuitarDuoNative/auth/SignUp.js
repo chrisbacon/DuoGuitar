@@ -5,10 +5,11 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  Button
 } from 'react-native';
 
-class SignUp extends Component {
+export default class SignUp extends Component {
 
   constructor(props) {
     super(props)
@@ -61,13 +62,11 @@ class SignUp extends Component {
   render() {
     return (
       <View onSubmit={this.signUp} className='login-form'>
-        <TextInput type="text" onChange={this.handleOnChangeEmail}  placeholder="Email"></TextInput>
-        <TextInput type="password" onChange={this.handleOnChangePassword}  placeholder="Password"></TextInput>
-        <TextInput type="password" onChange={this.handleOnChangePassConf}  placeholder="Password Confirmation"></TextInput>
-        <Button onClick={this.signUp}>  Sign Up </Button>
+        <TextInput onChangeText={this.handleOnChangeEmail} value="Email" />
+        <TextInput onChangeText={this.handleOnChangePassword}  value="Password" />
+        <TextInput onChangeText={this.handleOnChangePassConf} value="Password Confirmation"/>
+        <Button title="Sign Up" onPress={this.signUp}>Sign Up</Button>
       </View>
     )
   }
 }
-
-export default SignUp

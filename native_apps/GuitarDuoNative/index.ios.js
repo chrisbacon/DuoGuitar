@@ -18,7 +18,7 @@ export default class GuitarDuoNative extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Home/>
+        <Home></Home>
       </View>
     );
   }

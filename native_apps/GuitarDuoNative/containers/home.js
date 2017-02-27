@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import LoginBox from '../auth/LoginBox'
 import SignOut from '../auth/SignOut'
 import Requester from '../components/requester'
-// import DuoGuitar from '../containers/duoguitar'
+import DuoGuitar from '../containers/duoguitar'
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from 'react-native';
 
 export default class Home extends Component {
 
@@ -41,13 +48,14 @@ export default class Home extends Component {
 
   render() {
     if(this.state.currentUser){
+      console.log("in main app builder bit")
       return(
         <View>
           <View className='navbar'>
             <text> Welcome {this.state.currentUser.email}</text>
             <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
           </View>
-          // <DuoGuitar user={this.state.currentUser}/>
+          <DuoGuitar user={this.state.currentUser}/>
         </View>
       )
     }

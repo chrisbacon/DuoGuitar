@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  Button
 } from 'react-native';
 
 class SignOut extends Component{
@@ -30,7 +31,7 @@ class SignOut extends Component{
 
   render() {
     return (
-        <Button onClick={this.signOut}>Sign Out</Button>
+        <Button title="Sign out" onPress={this.signOut}>Sign Out</Button>
     )
   }
 }

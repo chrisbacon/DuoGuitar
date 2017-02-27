@@ -4,33 +4,26 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  TextInput,
-  View
-} from 'react-native';
+ import React, { Component } from 'react';
+ import {
+   AppRegistry,
+   StyleSheet,
+   Text,
+   View
+ } from 'react-native';
+ import Home from './containers/home';
+ import DuoGuitar from './containers/duoguitar';
 
-export default class GuitarDuoNative extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+ export default class GuitarDuoNative extends Component {
+   render() {
+     return (
+       <View style={styles.container}>
+         <Home></Home>
+       </View>
+     );
+   }
+ }
+
 
 const styles = StyleSheet.create({
   container: {

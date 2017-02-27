@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 
-class LoginBox extends Component {
+export default class LoginBox extends Component {
 
   render() {
     return (
@@ -22,5 +22,3 @@ class LoginBox extends Component {
   )
   }
 }
-
-export default LoginBox

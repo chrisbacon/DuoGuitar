@@ -5,10 +5,11 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  Button
 } from 'react-native';
 
-class SignIn extends Component {
+export default class SignIn extends Component {
 
   constructor(props){
     super(props)
@@ -23,12 +24,12 @@ class SignIn extends Component {
     }
   }
 
-  handleOnChangeEmail(event) {
-    this.setState({email: event.target.value})
+  handleOnChangeEmail(text) {
+    this.setState({email: text})
   }
 
-  handleOnChangePassword(event) {
-    this.setState({password: event.target.value})
+  handleOnChangePassword(text) {
+    this.setState({password: text})
   }
 
   signIn(event){
@@ -39,7 +40,7 @@ class SignIn extends Component {
         password: this.state.password
       }
     }
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/users/sign_in.json', type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
+    this.requester.makeRequest({codeDesired: 200, url: 'http://10.0.2.2:5000/users/sign_in.json', type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
   }
 
   userSignedIn(responseObject){
@@ -55,12 +56,12 @@ class SignIn extends Component {
   render() {
     return (
       <View  className='login-form' >
-        <TextInput type="text" onChange={this.handleOnChangeEmail}  placeholder="Email"></TextInput>
-        <TextInput type="password" onChange={this.handleOnChangePassword}  placeholder="Password"></TextInput>
-        <button onClick={this.signIn}>  Sign In </button>
+        <Text>Email</Text>
+        <TextInput onChangeText={this.handleOnChangeEmail}/>
+        <Text>Password</Text>
+        <TextInput onChangeText={this.handleOnChangePassword}/>
+        <Button title="Sign In" onPress={this.signIn}>Sign In</Button>
       </View>
     )
   }
 }
-
-export default SignIn
