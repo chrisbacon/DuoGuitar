@@ -26,6 +26,24 @@ Exercise.create(
   }
 )
 
+Exercise.create(
+  {
+    name: 'test exercise',
+    lesson: l1,
+    position: 2,
+    content: "Some more content"
+  }
+)
+
+Exercise.create(
+  {
+    name: 'test exercise',
+    lesson: l1,
+    position: 3,
+    content: "Even more content"
+  }
+)
+
 u1 = User.create(
 {
   email: "user@email.com",
