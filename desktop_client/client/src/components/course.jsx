@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Lesson from '../components/Lesson.jsx'
 import SubComponentMenu from '../components/subComponentMenu.jsx'
 
 class Course extends React.Component {
@@ -21,8 +21,12 @@ class Course extends React.Component {
   render () {
 
     if (this.state.selectedLesson) {
-      return(<div>{this.state.selectedLesson.name} was selected!!</div>
-    )
+      // return(<div>{this.state.selectedLesson.name} was selected!!</div>
+      return (
+          <Lesson 
+            name={this.state.selectedLesson.name} exercises={this.state.selectedLesson.exercises}
+          />
+        )
   } else {
     return(<div>
       <h1>{this.props.name}</h1>
