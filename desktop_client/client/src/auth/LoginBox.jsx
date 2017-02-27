@@ -24,7 +24,7 @@ class LoginBox extends React.Component {
 
   fetchUser(){
     console.log("fetching user");
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/users.json', type: 'GET', body: '', callback: this.userFetched})
+    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/users.json', type: 'GET', body: '', callback: this.userFetched})
   }
 
   userFetched(responseObject){

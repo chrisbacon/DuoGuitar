@@ -10,23 +10,18 @@ class SignOut extends React.Component{
 
   signOut(event){
     event.preventDefault();
-    const request = new XMLHttpRequest();
-    request.open("DELETE", "http://localhost:5000/users/sign_out");
-    request.setRequestHeader("Content-type", "application/json");
-    request.withCredentials = true;
+    this.requester.makeRequest({codeDesired: 204, url: "http://localhost:5000/users/sign_out", type: 'DELETE', body: '', callback: this.userSignedOut})
+  }
 
-    request.onload = () => {
-      console.log("signed out", request.status);
-      if (request.status === 204) {
-        this.props.onSignOut(null)
-      }
+  userSignedOut(responseObject){
+    if (!responseObject.error){
+      this.props.onSignOut(null)
     }
-    request.send(null);
   }
 
   render() {
     return (
-       <div>
+      <div>
         <button onClick={this.signOut}>Sign Out</button>
       </div>
     )
