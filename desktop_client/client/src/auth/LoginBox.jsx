@@ -46,12 +46,15 @@ class LoginBox extends React.Component {
       <SignIn url={this.props.url + "users/sign_in.json"} onSignIn={this.setUser}></SignIn>
       <SignUp url={this.props.url + "users.json"} onSignUp={this.setUser}></SignUp>
     </div>
+
     if(this.state.currentUser){
+
       mainDiv = <div>
         <h4> Welcome {this.state.currentUser.email}</h4>
         <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
         <DuoGuitar user={this.state.currentUser}></DuoGuitar>
       </div>
+
     }
     return (
       <div>

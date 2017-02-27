@@ -7,6 +7,7 @@ app.get('/', function (req, res) {
 });
 
 app.use(express.static('client/build'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 
 var server = app.listen(3000, function () {
