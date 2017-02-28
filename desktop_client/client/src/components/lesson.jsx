@@ -25,9 +25,7 @@ class Lesson extends React.Component {
     if (this.state.selectedExercise) {
       return (
         <div>
-          <h1>{this.state.selectedExercise.name}</h1>
-
-
+          <Exercise item={this.state.selectedExercise}/>
         </div>
         )
     } else {
