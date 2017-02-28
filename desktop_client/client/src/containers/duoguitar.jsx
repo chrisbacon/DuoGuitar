@@ -13,6 +13,8 @@ class DuoGuitar extends React.Component {
       selectedIndex: null
     }
 
+    this.userCourses;
+
     this.selectCourse = this.selectCourse.bind(this);
     this.populateCourses = this.populateCourses.bind(this);
     this.resetCourse = this.resetCourse.bind(this);
@@ -36,8 +38,6 @@ class DuoGuitar extends React.Component {
       for (var y=0; y<(userCourses.length); y++){
         if(courses[i].id === userCourses[y].id){
           courses[i].enrolled = true;
-        } else {
-          courses[i].enrolled = false;
         }
       }
     }
