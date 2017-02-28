@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise: one
+  source: MyString
+  type: 
+
+two:
+  exercise: two
+  source: MyString
+  type: 

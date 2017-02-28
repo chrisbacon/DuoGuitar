@@ -8,11 +8,32 @@ c1 = Course.create(
   name: 'test course'
 }
 )
+c2 = Course.create(
+{
+  name: 'test course 2'
+}
+)
 
 l1 = Lesson.create(
 {
   name: 'test lesson',
   course: c1,
+  position: 1
+}
+)
+
+l2 = Lesson.create(
+{
+  name: 'media test lesson',
+  course: c1,
+  position: 2
+}
+)
+
+l3 = Lesson.create(
+{
+  name: 'media test lesson',
+  course: c2,
   position: 1
 }
 )
@@ -61,6 +82,21 @@ Exercise.create(
   }
 )
 
+media_exercise = Exercise.create(
+    name: 'media test exercise',
+    lesson: l2,
+    position: 5,
+    content: "Look at all this lovely content"
+  )
+
+Medium.create(
+  {
+    exercise: media_exercise,
+    source: "https://www.youtube.com/embed/KSiv6wOBG8c",
+    source_type: "video"
+  }
+)
+
 u1 = User.create(
 {
   email: "user@email.com",
@@ -77,11 +113,7 @@ u2 = User.create(
 }
 )
 
-c2 = Course.create(
-{
-  name: 'test course 2'
-}
-)
+
 
 u1.courses << c1
 u1.courses << c2

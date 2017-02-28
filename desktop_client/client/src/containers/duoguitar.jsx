@@ -1,7 +1,7 @@
 import React from 'react';
 import SubComponentMenu from '../components/subComponentMenu.jsx'
-import Course from '../components/Course.jsx'
-import Requester from '../components/Requester.jsx'
+import Course from '../components/course.jsx'
+import Requester from '../components/requester.jsx'
 
 class DuoGuitar extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class DuoGuitar extends React.Component {
 
     this.selectCourse = this.selectCourse.bind(this);
     this.populateCourses = this.populateCourses.bind(this);
+    this.resetCourse = this.resetCourse.bind(this);
   }
 
   componentDidMount(){
@@ -44,11 +45,15 @@ class DuoGuitar extends React.Component {
   selectCourse(course) {
     this.setState({selectedCourse: course})
   }
-  
+
+  resetCourse() {
+    this.selectCourse(null);
+  }
+
   render () {
     console.log('selectedCourse ', this.state.selectedCourse)
     if (this.state.selectedCourse) {
-      return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}/>
+      return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons} resetCourse={this.resetCourse}/>
     )
   } else {
     return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
