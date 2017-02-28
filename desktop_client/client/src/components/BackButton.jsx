@@ -15,3 +15,5 @@ class BackButton extends React.Component {
         return <button onClick={this.handleClick}>Back</button>
     }
 }
+
+export default BackButton;

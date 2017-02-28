@@ -13,6 +13,7 @@ class Lesson extends React.Component {
     }
 
     this.selectExercise = this.selectExercise.bind(this);
+    this.resetExercise = this.resetExercise.bind(this);
 
   }
 
@@ -20,19 +21,23 @@ class Lesson extends React.Component {
     this.setState({selectedExercise: exercise});
   }
 
+  resetExercise() {
+    this.selectExercise(null);
+  }
+
   render() {
 
     if (this.state.selectedExercise) {
       return (
         <div>
-          <Exercise item={this.state.selectedExercise}/>
+          <Exercise item={this.state.selectedExercise} resetExercise={this.resetExercise}/>
         </div>
         )
     } else {
       return (
         <div>
         <h1>Lesson: {this.props.name}</h1>
-        <SubComponentMenu selectItem={this.selectExercise} items={this.props.exercises} />
+        <SubComponentMenu selectItem={this.selectExercise} items={this.props.exercises} reset={this.props.resetLesson} />
         </div>
         )
     }

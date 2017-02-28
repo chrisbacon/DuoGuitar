@@ -1,4 +1,5 @@
 import React from 'react'
+import BackButton from '../components/BackButton.jsx'
 import SubComponentMenu from '../components/SubComponentMenu.jsx'
 
 class Exercise extends React.Component {
@@ -26,6 +27,7 @@ class Exercise extends React.Component {
       <h1>{this.props.item.name}</h1>
       <div className="media-container">{this.state.media}</div>
       <p>{this.props.item.content}</p>
+      <BackButton reset={this.props.resetExercise} />
       </div>
       )
   }
