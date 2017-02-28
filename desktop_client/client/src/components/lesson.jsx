@@ -18,9 +18,8 @@ class Lesson extends React.Component {
     this.nextExercise = this.nextExercise.bind(this);
   }
 
-  selectExercise(object, index) {
-    console.log(index)
-    this.setState({selectedExerciseIndex: index});
+  selectExercise(items, index) {
+    this.setState({selectedExerciseIndex: index})
   }
 
   resetExercise() {
@@ -29,7 +28,7 @@ class Lesson extends React.Component {
 
   previousExercise() {
     console.log("prev button clicked")
-    if (this.state.selectedExerciseIndex > 0) {
+    if (this.state.selectedExerciseIndex >= 0) {
       this.setState({selectedExerciseIndex: (this.state.selectedExerciseIndex - 1)})
     }
   }
