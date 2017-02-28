@@ -26,22 +26,22 @@ class Lesson extends React.Component {
   }
 
   previousExercise() {
-    console.log("prev button clicked")
+    console.log("prev button clicked", this.state.selectedIndex)
     if (this.state.selectedIndex >= 0) {
-      this.setState({selectedIndex: (this.state.selectedIndex - 1)})
+      this.selectExercise(this.state.selectedIndex - 1)
     }
   }
 
   nextExercise() {
-    console.log("next button clicked")
-    if (this.state.selectedIndex < this.state.exercises.length) {
-      this.setState({selectedIndex: (this.state.selectedIndex + 1)})
+    console.log("next button clicked", this.state.selectedIndex, this.props.lesson.exercises.length)
+    if (this.state.selectedIndex < this.props.lesson.exercises.length) {
+      this.selectExercise(this.state.selectedIndex + 1)
     }
   }
 
   render() {
 
-    if (this.state.selectedIndex) {
+    if (this.state.selectedIndex != null) {
       return (
         <div>
           <Exercise item={this.props.lesson.exercises[this.state.selectedIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>

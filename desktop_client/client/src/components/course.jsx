@@ -23,7 +23,7 @@ class Course extends React.Component {
   }
 
   render () {
-    if (this.state.selectedIndex) {
+    if (this.state.selectedIndex != null) {
 
       return (
           <Lesson 

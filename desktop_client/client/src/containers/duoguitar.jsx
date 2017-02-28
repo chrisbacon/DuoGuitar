@@ -51,8 +51,9 @@ class DuoGuitar extends React.Component {
   }
 
   render () {
+    console.log(typeof(this.state.selectedIndex))
     const course = this.state.courses[this.state.selectedIndex]
-    if (this.state.selectedIndex) {
+    if (this.state.selectedIndex != null) {
 
       return(
 
