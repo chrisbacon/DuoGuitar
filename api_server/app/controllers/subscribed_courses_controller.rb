@@ -3,7 +3,7 @@ class SubscribedCoursesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    course = SubscribedCourse.create( course_params )
+    course = SubscribedCourse.create({user_id: current_user.id, course_id: params[:course_id]})
     render json: course, status: :created
   end
 

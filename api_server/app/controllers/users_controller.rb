@@ -15,8 +15,5 @@ class UsersController < ApplicationController
     )
   end
 
-  def create
-    User.create({})
-  end
 
 end
