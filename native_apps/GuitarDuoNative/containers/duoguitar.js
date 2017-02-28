@@ -14,7 +14,6 @@ import Requester from '../components/requester'
 export default class DuoGuitar extends Component {
   constructor(props) {
     super(props);
-    console.log("in duoguitar constructor")
     this.requester = new Requester()
 
     this.state = {
@@ -24,6 +23,7 @@ export default class DuoGuitar extends Component {
 
     this.selectCourse = this.selectCourse.bind(this);
     this.populateCourses = this.populateCourses.bind(this);
+    this.resetCourse = this.resetCourse.bind(this);
   }
 
   componentDidMount(){
@@ -32,8 +32,6 @@ export default class DuoGuitar extends Component {
   }
 
   populateCourses(responseObject){
-    console.log("got this far")
-    console.log(responseObject)
     if (!responseObject.error){
       this.setState( { courses: responseObject.response } )
     }
@@ -57,13 +55,15 @@ export default class DuoGuitar extends Component {
     this.setState({selectedCourse: course})
   }
 
+  resetCourse() {
+    this.selectCourse(null);
+  }
+
   render () {
-    console.log('selectedCourse ', this.state.selectedCourse)
     if (this.state.selectedCourse) {
-      console.log("selected course exists")
-      return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}/>)
+      return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons}
+      resetCourse={this.resetCourse}/>)
     } else {
-      console.log("no selected course")
       return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
     }
   }

@@ -7,6 +7,7 @@ import {
   View,
   Button
 } from 'react-native';
+import BackButton from '../components/backButton'
 
 export default class SubComponentMenu extends Component {
   constructor(props) {
@@ -24,7 +25,6 @@ export default class SubComponentMenu extends Component {
   render() {
 
     if (this.props.items) {
-      console.log("items: ", this.props.items)
       const items = this.props.items.map(function(item, index) {
         if (item.enrolled === true) {
           return <Button
@@ -43,7 +43,16 @@ export default class SubComponentMenu extends Component {
             key={index}>{item.name}</Button>
         }
       }.bind(this));
-      return (<View>{items}</View>)
+      let backButton = null;
+      if(this.props.reset){
+        backButton = <BackButton reset={this.props.reset} />
+      }
+      return (
+        <View>
+          <View>{items}</View>
+          {backButton}
+        </View>
+      )
     } else {
       return (<View></View>)
     }

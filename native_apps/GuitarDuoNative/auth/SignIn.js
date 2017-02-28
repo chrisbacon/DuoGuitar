@@ -68,7 +68,7 @@ export default class SignIn extends Component {
 
 const styles = StyleSheet.create({
   input: {
-    height: 20,
+    height: 40,
     backgroundColor: 'beige',
   },
 });
