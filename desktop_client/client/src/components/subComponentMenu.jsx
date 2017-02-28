@@ -9,8 +9,8 @@ class SubComponentMenu extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    const selectedItem = this.props.items[event.target.value]
-    this.props.selectItem(selectedItem, event.target.value);
+    console.log(event.target.value, parseInt(event.target.value), event.target)
+    this.props.selectItem(parseInt(event.target.value));
   }
 
   render() {
