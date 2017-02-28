@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170227155031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "content"
-    t.string   "position"
+    t.integer  "position"
     t.index ["lesson_id"], name: "index_exercises_on_lesson_id"
     t.index ["position", "lesson_id"], name: "index_exercises_on_position_and_lesson_id", unique: true
   end
