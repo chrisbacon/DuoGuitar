@@ -10,7 +10,7 @@ class DuoGuitar extends React.Component {
 
     this.state = {
       courses: [],
-      selectedCourse: null
+      selectedIndex: null
     }
 
     this.selectCourse = this.selectCourse.bind(this);
@@ -42,8 +42,8 @@ class DuoGuitar extends React.Component {
     this.setState(courses: courses)
   }
 
-  selectCourse(course) {
-    this.setState({selectedCourse: course})
+  selectCourse(index) {
+    this.setState({selectedIndex: index})
   }
 
   resetCourse() {
@@ -51,12 +51,22 @@ class DuoGuitar extends React.Component {
   }
 
   render () {
-    console.log('selectedCourse ', this.state.selectedCourse)
-    if (this.state.selectedCourse) {
-      return(<Course name={this.state.selectedCourse.name} lessons={this.state.selectedCourse.lessons} resetCourse={this.resetCourse}/>
+    const course = this.state.courses[this.state.selectedIndex]
+    if (this.state.selectedIndex) {
+
+      return(
+
+        <Course name={course.name} lessons={course.lessons} resetCourse={this.resetCourse}/>
     )
+
   } else {
-    return(<SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>)
+
+    return(
+
+      <SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>
+      
+      )
+
   }
 }
 }
