@@ -14,10 +14,12 @@ class Lesson extends React.Component {
 
     this.selectExercise = this.selectExercise.bind(this);
     this.resetExercise = this.resetExercise.bind(this);
-
+    this.previousExercise = this.previousExercise.bind(this);
+    this.nextExercise = this.nextExercise.bind(this);
   }
 
   selectExercise(object, index) {
+    console.log(index)
     this.setState({selectedExerciseIndex: index});
   }
 
@@ -25,16 +27,26 @@ class Lesson extends React.Component {
     this.selectExercise(null);
   }
 
-  previousExercise() {}
+  previousExercise() {
+    console.log("prev button clicked")
+    if (this.state.selectedExerciseIndex > 0) {
+      this.setState({selectedExerciseIndex: (this.state.selectedExerciseIndex - 1)})
+    }
+  }
 
-  nextExercise() {}
+  nextExercise() {
+    console.log("next button clicked")
+    if (this.state.selectedExerciseIndex < this.state.exercises.length) {
+      this.setState({selectedExerciseIndex: (this.state.selectedExerciseIndex + 1)})
+    }
+  }
 
   render() {
 
     if (this.state.selectedExerciseIndex) {
       return (
         <div>
-          <Exercise item={this.props.exercises[this.state.selectedExerciseIndex]} resetExercise={this.resetExercise}/>
+          <Exercise item={this.props.exercises[this.state.selectedExerciseIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>
         </div>
         )
     } else {

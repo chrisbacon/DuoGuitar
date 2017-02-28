@@ -32,8 +32,8 @@ class Exercise extends React.Component {
         <div className="media-container">{this.state.media}</div>
         <p>{this.props.item.content}</p>
         <div>
-          <button />
-          <button />
+          <button className="prev" onClick={this.props.prev}>Previous Exercise</button>
+          <button className="next" onClick={this.props.next}>Next Exercise</button>
         </div>
         <BackButton reset={this.props.resetExercise} />
       </div>
