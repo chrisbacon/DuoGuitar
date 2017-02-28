@@ -11,10 +11,10 @@ class Exercise extends React.Component {
 
   getMediaType() {
     if (this.props.item.medium.source_type === "video") {
-      this.state.media = <iframe src={this.props.item.medium.source} width="500" height="300" frameborder="0" />
+      this.state.media = <iframe src={this.props.item.medium.source} width="500" height="300" frameBorder="5" />
     } else if  (this.props.item.medium.source_type === "image") 
     {
-      this.state.media = <img src={this.props.item.medium.source} width="500" height="300" frameborder="0" />
+      this.state.media = <img src={this.props.item.medium.source} frameBorder="5" />
     }
   }
 
