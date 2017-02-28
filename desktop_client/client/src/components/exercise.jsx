@@ -1,6 +1,6 @@
 import React from 'react'
 import BackButton from '../components/BackButton.jsx'
-import SubComponentMenu from '../components/SubComponentMenu.jsx'
+import SubComponentMenu from '../components/subComponentMenu.jsx'
 
 class Exercise extends React.Component {
   constructor(props) {
@@ -15,14 +15,14 @@ class Exercise extends React.Component {
 
       if (this.props.item.medium.source_type === "video") {
         this.state.media = <iframe src={this.props.item.medium.source} width="500" height="300" frameBorder="5" />
-      } else if  (this.props.item.medium.source_type === "image") 
+      } else if  (this.props.item.medium.source_type === "image")
       {
         this.state.media = <img src={this.props.item.medium.source} frameBorder="5" />
-      } 
+      }
     }
   }
 
-  render() {  
+  render() {
 
     this.getMediaType();
 
