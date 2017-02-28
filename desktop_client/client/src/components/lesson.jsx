@@ -9,6 +9,7 @@ class Lesson extends React.Component {
     this.state = {
       exercises: null,
       selectedExercise: null
+
     }
 
     this.selectExercise = this.selectExercise.bind(this);
@@ -20,9 +21,14 @@ class Lesson extends React.Component {
   }
 
   render() {
+
     if (this.state.selectedExercise) {
       return (
-        <div>{this.state.selectedExercise.name}</div>
+        <div>
+          <h1>{this.state.selectedExercise.name}</h1>
+
+
+        </div>
         )
     } else {
       return (
