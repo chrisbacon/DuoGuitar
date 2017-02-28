@@ -9,8 +9,21 @@ class Exercise extends React.Component {
   }
 
   render() {
-    console.log(this.props.item)
-    return <div>yer maw</div>
+    console.log(this.props.item);
+
+    var media = null;
+
+    if (this.props.item.medium.source_type === "video") {
+      media = <iframe src={this.props.item.medium.source} width="500" height="300" frameborder="0" />
+    }   
+
+    return (
+        <div className="exercise-container">
+          <h1>{this.props.item.name}</h1>
+          <div className="media-container">{media}</div>
+          <p>{this.props.item.content}</p>
+        </div>
+      )
   }
 
 }
