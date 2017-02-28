@@ -13,6 +13,7 @@ import {
 export default class Exercise extends Component {
   constructor(props) {
     super(props);
+    console.log("in exercise constructor")
 
     this.state = {media: null}
   }

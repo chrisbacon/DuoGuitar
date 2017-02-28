@@ -16,9 +16,7 @@ export default class SubComponentMenu extends Component {
   }
 
   handleClick(index) {
-    console.log("index", index)
     const selectedItem = this.props.items[index]
-    console.log(selectedItem)
     this.props.selectItem(selectedItem)
   }
 

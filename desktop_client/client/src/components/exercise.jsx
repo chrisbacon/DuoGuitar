@@ -38,7 +38,7 @@ class Exercise extends React.Component {
         <div>
         <BackButton click={this.props.prev}/>
         <ForwardButton click={this.props.next}/>
-          
+
         </div>
       </div>
       )

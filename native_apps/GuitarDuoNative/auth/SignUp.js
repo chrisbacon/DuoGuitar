@@ -35,6 +35,7 @@ export default class SignUp extends Component {
         password_confirmation: this.state.passwordConfirmation
       }
     }
+    console.log(this.props.url)
     this.requester.makeRequest({codeDesired: 201, url: this.props.url, type: 'POST', data: credentials, body: '', callback: this.userSignedUp})
   }
 

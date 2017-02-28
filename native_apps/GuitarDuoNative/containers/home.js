@@ -24,12 +24,10 @@ export default class Home extends Component {
   }
 
   setUser(user){
-    console.log("user: ", user)
     this.setState({currentUser:user});
   }
 
   fetchUser(){
-    console.log("fetching user");
     this.requester.makeRequest({codeDesired: 200, url: this.props.url + '/users.json', type: 'GET', body: '', callback: this.userFetched})
   }
 
@@ -48,7 +46,6 @@ export default class Home extends Component {
 
   render() {
     if(this.state.currentUser){
-      console.log("in main app builder bit")
       return(
         <View>
           <View className='navbar'>

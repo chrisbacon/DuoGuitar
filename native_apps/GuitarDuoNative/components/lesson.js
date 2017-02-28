@@ -48,6 +48,7 @@ export default class Lesson extends Component {
   }
 
   render() {
+    console.log("in lesson render")
     if (this.state.selectedExerciseIndex) {
       return (
         <View>
