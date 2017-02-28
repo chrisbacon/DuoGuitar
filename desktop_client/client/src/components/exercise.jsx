@@ -28,10 +28,14 @@ class Exercise extends React.Component {
 
     return (
       <div className="exercise-container">
-      <h1>{this.props.item.name}</h1>
-      <div className="media-container">{this.state.media}</div>
-      <p>{this.props.item.content}</p>
-      <BackButton reset={this.props.resetExercise} />
+        <h1>{this.props.item.name}</h1>
+        <div className="media-container">{this.state.media}</div>
+        <p>{this.props.item.content}</p>
+        <div>
+          <button />
+          <button />
+        </div>
+        <BackButton reset={this.props.resetExercise} />
       </div>
       )
   }

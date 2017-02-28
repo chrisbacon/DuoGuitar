@@ -25,6 +25,10 @@ class Lesson extends React.Component {
     this.selectExercise(null);
   }
 
+  previousExercise() {}
+
+  nextExercise() {}
+
   render() {
 
     if (this.state.selectedExercise) {
