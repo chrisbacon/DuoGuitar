@@ -8,6 +8,11 @@ c1 = Course.create(
   name: 'test course'
 }
 )
+c2 = Course.create(
+{
+  name: 'test course 2'
+}
+)
 
 l1 = Lesson.create(
 {
@@ -22,6 +27,14 @@ l2 = Lesson.create(
   name: 'media test lesson',
   course: c1,
   position: 2
+}
+)
+
+l3 = Lesson.create(
+{
+  name: 'media test lesson',
+  course: c2,
+  position: 1
 }
 )
 
@@ -100,11 +113,7 @@ u2 = User.create(
 }
 )
 
-c2 = Course.create(
-{
-  name: 'test course 2'
-}
-)
+
 
 u1.courses << c1
 u1.courses << c2

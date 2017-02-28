@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170227155031) do
     t.text     "content"
     t.string   "position"
     t.index ["lesson_id"], name: "index_exercises_on_lesson_id"
-    t.index ["position"], name: "index_exercises_on_position", unique: true
+    t.index ["position", "lesson_id"], name: "index_exercises_on_position_and_lesson_id", unique: true
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170227155031) do
     t.datetime "updated_at", null: false
     t.integer  "position"
     t.index ["course_id"], name: "index_lessons_on_course_id"
-    t.index ["position"], name: "index_lessons_on_position", unique: true
+    t.index ["position", "course_id"], name: "index_lessons_on_position_and_course_id", unique: true
   end
 
   create_table "media", force: :cascade do |t|
