@@ -113,6 +113,119 @@ u2 = User.create(
 }
 )
 
+#------- FLAMENCO COURSE ----------
+
+basic_tangos_compas = Course.new(
+    {name: "Flamenco - Basic Tangos Course"}
+  )
+
+tangos_lesson1 = Lesson.create(
+{
+  name: 'Basic Tangos Compas - Lesson 1',
+  course: basic_tangos_compas,
+  position: 1
+}
+)
+
+tangos_lesson2 = Lesson.create(
+{
+  name: 'Basic Tangos Compas - Lesson 2',
+  course: basic_tangos_compas,
+  position: 2
+}
+)
+
+tangos_lesson3 = Lesson.create(
+{
+  name: 'Basic Tangos Compas - Lesson 3',
+  course: basic_tangos_compas,
+  position: 3
+}
+)
+
+tangos_final = Lesson.create(
+{
+  name: 'Basic Tangos Compas - Final Lesson',
+  course: basic_tangos_compas,
+  position: 4
+}
+)
+
+tangos_lesson1_exercise1 = Exercise.create(
+  {
+    name: 'Lesson 1 - Exercise 1',
+    lesson: tangos_lesson1,
+    position: 1,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_lesson1_exercise1,
+    source: "https://www.youtube.com/embed/_RGYzv0O5GE",
+    source_type: "video"
+  }
+)
+
+tangos_lesson2_exercise1 = Exercise.create(
+  {
+    name: 'Lesson 2 - Exercise 1',
+    lesson: tangos_lesson2,
+    position: 1,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_lesson2_exercise1,
+    source: "https://www.youtube.com/embed/AOWckeFi-e0",
+    source_type: "video"
+  }
+)
+
+tangos_lesson3_exercise1 = Exercise.create(
+  {
+    name: 'Lesson 3 - Exercise 1',
+    lesson: tangos_lesson3,
+    position: 1,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_lesson3_exercise1,
+    source: "https://www.youtube.com/embed/NSIEEaw1KSU",
+    source_type: "video"
+  }
+)
+
+tangos_final_exercise1 = Exercise.create(
+  {
+    name: 'Final Lesson - Exercise 1',
+    lesson: tangos_final,
+    position: 1,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_final_exercise1,
+    source: "https://www.youtube.com/embed/4dtEKZX4lFU",
+    source_type: "video"
+  }
+)
+
+
+# lesson1 = "https://www.youtube.com/embed/_RGYzv0O5GE"
+# lesson2 = "https://www.youtube.com/embed/AOWckeFi-e0"
+# lesson3 = "https://www.youtube.com/embed/NSIEEaw1KSU"
+# final = "https://www.youtube.com/embed/4dtEKZX4lFU"
+
+# ---------END OF FLAMENCO COURSE ---------------
 
 
 u1.courses << c1
