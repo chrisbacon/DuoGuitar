@@ -92,7 +92,7 @@ media_exercise = Exercise.create(
 Medium.create(
   {
     exercise: media_exercise,
-    source: "https://www.youtube.com/embed/KSiv6wOBG8c",
+    source: "https://www.youtube.com/embed/_RGYzv0O5GE",
     source_type: "video"
   }
 )
