@@ -129,7 +129,7 @@ tangos_lesson1 = Lesson.create(
 
 tangos_lesson2 = Lesson.create(
 {
-  name: 'Basic Tangos Compas - Lesson 1',
+  name: 'Basic Tangos Compas - Lesson 2',
   course: basic_tangos_compas,
   position: 2
 }
@@ -137,7 +137,7 @@ tangos_lesson2 = Lesson.create(
 
 tangos_lesson3 = Lesson.create(
 {
-  name: 'Basic Tangos Compas - Lesson 1',
+  name: 'Basic Tangos Compas - Lesson 3',
   course: basic_tangos_compas,
   position: 3
 }
