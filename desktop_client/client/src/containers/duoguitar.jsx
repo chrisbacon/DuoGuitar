@@ -51,6 +51,7 @@ class DuoGuitar extends React.Component {
       this.requester.makeRequest({codeDesired: 201, url: 'http://localhost:5000/api/subscribed_courses', type: 'POST', body: '', data: data, callback: function() {this.state.courses[index].enrolled = true}.bind(this)})
     }
       this.setState({selectedIndex: index})
+
   }
 
   resetCourse() {

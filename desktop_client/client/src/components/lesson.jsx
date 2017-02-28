@@ -26,7 +26,7 @@ class Lesson extends React.Component {
   }
 
   previousExercise() {
-    if (this.state.selectedIndex >= 0) {
+    if (this.state.selectedIndex > 0) {
       this.selectExercise(this.state.selectedIndex - 1)
     }
   }
