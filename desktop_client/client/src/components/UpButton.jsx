@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BackButton extends React.Component {
+class UpButton extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -8,12 +8,12 @@ class BackButton extends React.Component {
 
     handleClick(event) {
         event.preventDefault()
-        this.props.click()
+        this.props.reset()
     }
 
     render() {
-        return <span className="glyphicon glyphicon-arrow-left" onClick={this.handleClick}></span>
+        return <button onClick={this.handleClick}>Return</button>
     }
 }
 
-export default BackButton;
+export default UpButton;

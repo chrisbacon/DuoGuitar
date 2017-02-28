@@ -1,6 +1,8 @@
-import React from 'react'
-import BackButton from '../components/BackButton.jsx'
-import SubComponentMenu from '../components/subComponentMenu.jsx'
+import React from 'react';
+import UpButton from './UpButton.jsx';
+import SubComponentMenu from './subComponentMenu.jsx';
+import ForwardButton from './ForwardButton.jsx';
+import BackButton from './BackButton.jsx';
 
 class Exercise extends React.Component {
   constructor(props) {
@@ -28,14 +30,16 @@ class Exercise extends React.Component {
 
     return (
       <div className="exercise-container">
+
+      <UpButton reset={this.props.resetExercise} />
         <h1>{this.props.item.name}</h1>
         <div className="media-container">{this.state.media}</div>
         <p>{this.props.item.content}</p>
         <div>
-          <button className="prev" onClick={this.props.prev}>Previous Exercise</button>
-          <button className="next" onClick={this.props.next}>Next Exercise</button>
+        <BackButton click={this.props.prev}/>
+        <ForwardButton click={this.props.next}/>
+          
         </div>
-        <BackButton reset={this.props.resetExercise} />
       </div>
       )
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BackButton extends React.Component {
+class ForwardButton extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -12,8 +12,8 @@ class BackButton extends React.Component {
     }
 
     render() {
-        return <span className="glyphicon glyphicon-arrow-left" onClick={this.handleClick}></span>
+        return <span className="glyphicon glyphicon-arrow-right" onClick={this.handleClick}></span>
     }
 }
 
-export default BackButton;
+export default ForwardButton;
