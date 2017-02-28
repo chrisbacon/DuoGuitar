@@ -26,14 +26,12 @@ class Lesson extends React.Component {
   }
 
   previousExercise() {
-    console.log("prev button clicked", this.state.selectedIndex)
     if (this.state.selectedIndex >= 0) {
       this.selectExercise(this.state.selectedIndex - 1)
     }
   }
 
   nextExercise() {
-    console.log("next button clicked", this.state.selectedIndex, this.props.lesson.exercises.length)
     if (this.state.selectedIndex < this.props.lesson.exercises.length) {
       this.selectExercise(this.state.selectedIndex + 1)
     }
@@ -50,8 +48,7 @@ class Lesson extends React.Component {
     } else {
       return (
         <div>
-        <h1>Lesson: {this.props.lesson.name}</h1>
-        <SubComponentMenu selectItem={this.selectExercise} items={this.props.lesson.exercises} reset={this.props.resetLesson} />
+        <SubComponentMenu name={this.props.lesson.name} selectItem={this.selectExercise} items={this.props.lesson.exercises} reset={this.props.resetLesson} />
         </div>
         )
     }

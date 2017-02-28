@@ -64,7 +64,7 @@ class DuoGuitar extends React.Component {
 
     return(
 
-      <SubComponentMenu selectItem={this.selectCourse} items={this.state.courses}/>
+      <SubComponentMenu name="Course List" selectItem={this.selectCourse} items={this.state.courses}/>
       
       )
 

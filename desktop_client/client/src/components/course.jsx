@@ -34,8 +34,7 @@ class Course extends React.Component {
   } else {
 
     return(<div>
-      <h1>{this.props.name}</h1>
-      <SubComponentMenu selectItem={this.selectLesson} items={this.props.lessons} reset={this.props.resetCourse}/>
+      <SubComponentMenu name={this.props.name} selectItem={this.selectLesson} items={this.props.lessons} reset={this.props.resetCourse}/>
     </div>)
     
   }

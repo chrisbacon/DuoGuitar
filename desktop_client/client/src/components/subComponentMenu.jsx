@@ -1,5 +1,5 @@
 import React from 'react';
-import BackButton from '../components/BackButton.jsx'
+import UpButton from '../components/UpButton.jsx'
 
 class SubComponentMenu extends React.Component {
   constructor(props) {
@@ -23,10 +23,12 @@ class SubComponentMenu extends React.Component {
           return <button title="not-enrolled" className="not-enrolled" onClick={this.handleClick} value={index} key={index}>{item.name}</button>
         }
       }.bind(this));
+
       return (
         <div>
+        <UpButton reset={this.props.reset} />
+        <h1>{this.props.name}</h1>
         <div>{items}</div>
-        <BackButton reset={this.props.reset} />
         </div>
 
         )
