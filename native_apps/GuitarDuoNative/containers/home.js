@@ -49,10 +49,15 @@ export default class Home extends Component {
       return(
         <View>
           <View className='navbar'>
-            <Text> Welcome {this.state.currentUser.email}</Text>
-            <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
+            <Text>DuoGuitar</Text>
+            <View id="user-info">
+              <Text> Welcome {this.state.currentUser.email}</Text>
+              <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
+            </View>
           </View>
-          <DuoGuitar url={this.props.url} user={this.state.currentUser}></DuoGuitar>
+          <View className="main">
+            <DuoGuitar url={this.props.url} user={this.state.currentUser}></DuoGuitar>
+          </View>
         </View>
       )
     }

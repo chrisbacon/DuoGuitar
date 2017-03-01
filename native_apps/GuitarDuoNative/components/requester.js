@@ -16,6 +16,7 @@ export default class Requester{
         }
         params.callback({code: request.status, error: false, response: responseJson})
       } else{
+        console.log("Error - unexpected API response code")
         params.callback({code: request.status, error: true})
       }
     }
@@ -25,4 +26,13 @@ export default class Requester{
       request.send(null)
     }
   }
+
+  getItems(params){
+    this.makeRequest({codeDesired: 200, url: params.url, type: 'GET', body: '', callback: params.callback})
+  }
+
+  setItems(params){
+    this.makeRequest({codeDesired: 200, url: params.url, type: 'POST', body: '', data: params.data, callback: params.callback})
+  }
+
 }

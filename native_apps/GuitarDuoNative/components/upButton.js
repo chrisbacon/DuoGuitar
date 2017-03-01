@@ -8,17 +8,18 @@ import {
   Button
 } from 'react-native';
 
-export default class BackButton extends React.Component {
+export default class UpButton extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    this.props.click()
+  handleClick(event) {
+    event.preventDefault()
+    this.props.reset()
   }
 
   render() {
-    return <Button title="&larr;" onPress={this.handleClick}>Back</Button>
+    return <Button className='arrowbutton up' title='&uarr;' onPress={this.handleClick}>&uarr;</Button>
   }
 }

@@ -7,7 +7,7 @@ import {
   View,
   Button
 } from 'react-native';
-import BackButton from '../components/backButton'
+import UpButton from '../components/upButton'
 
 export default class SubComponentMenu extends Component {
   constructor(props) {
@@ -16,12 +16,11 @@ export default class SubComponentMenu extends Component {
   }
 
   handleClick(index) {
-    const selectedItem = this.props.items[index]
-    this.props.selectItem(selectedItem)
+    this.props.selectItem(index)
   }
 
   render() {
-
+    console.log("in subComponentMenu render")
     if (this.props.items) {
       const items = this.props.items.map(function(item, index) {
         if (item.enrolled === true) {
@@ -41,14 +40,21 @@ export default class SubComponentMenu extends Component {
             key={index}>{item.name}</Button>
         }
       }.bind(this));
-      let backButton = null;
+      console.log("past button renders")
+      let upButton;
       if(this.props.reset){
-        backButton = <BackButton reset={this.props.reset} />
+        upButton = <UpButton reset={this.props.reset} />
       }
+      console.log("past upbutton make")
+      console.log(items)
       return (
-        <View>
-          <View>{items}</View>
-          {backButton}
+        <View className="content">
+          {upButton}
+          <View classname="items-container">
+            {items}
+          </View>
+
+
         </View>
       )
     } else {

@@ -1,6 +1,7 @@
-
 import React, { Component } from 'react';
+import Exercise from '../components/exercise'
 import SubComponentMenu from '../components/subComponentMenu'
+import Requester from '../components/requester'
 import {
   AppRegistry,
   StyleSheet,
@@ -12,57 +13,96 @@ import {
 
 export default class Lesson extends Component {
   constructor(props) {
-    super(props);
+  super(props);
+  console.log("lesson props")
+  console.log(props)
+  this.requester = new Requester()
 
-    this.state = {
-      exercises: null,
-      selectedExercise: null
-    }
-
-    this.selectExercise = this.selectExercise.bind(this);
-    this.resetExercise = this.resetExercise.bind(this);
-    this.previousExercise = this.previousExercise.bind(this);
-    this.nextExercise = this.nextExercise.bind(this);
+  this.state = {
+    selectedIndex: null,
+    exercises: this.props.lesson.exercises
   }
 
-  selectExercise(exercise) {
-    this.setState({selectedExercise: exercise});
-  }
+  this.selectExercise = this.selectExercise.bind(this);
+  this.resetExercise = this.resetExercise.bind(this);
+  this.previousExercise = this.previousExercise.bind(this);
+  this.nextExercise = this.nextExercise.bind(this);
 
-  resetExercise() {
-    this.selectExercise(null);
-  }
+  this.populateEnrolledExercises = this.populateEnrolledExercises.bind(this);
+  this.getEnrolledExercises = this.getEnrolledExercises.bind(this);
+}
 
-  previousExercise() {
-    console.log("prev button clicked")
-    if (this.state.selectedExerciseIndex > 0) {
-      this.setState({selectedExerciseIndex: (this.state.selectedExerciseIndex - 1)})
-    }
-  }
+componentDidMount() {
+  this.getEnrolledExercises();
+}
 
-  nextExercise() {
-    console.log("next button clicked")
-    if (this.state.selectedExerciseIndex < this.state.exercises.length) {
-      this.setState({selectedExerciseIndex: (this.state.selectedExerciseIndex + 1)})
-    }
-  }
+getEnrolledExercises(){
+  this.requester.getItems({url: this.props.url + 'api/subscribed_exercises', callback: this.populateEnrolledExercises})
+}
 
-  render() {
-    console.log("in lesson render")
-    if (this.state.selectedExerciseIndex) {
-      return (
-        <View>
-          <Exercise item={this.props.exercises[this.state.selectedExerciseIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>
-        </View>
-        )
-    } else {
-      return (
-        <View>
-        <Text>Lesson: {this.props.name}</Text>
-        <SubComponentMenu selectItem={this.selectExercise} items={this.props.exercises} reset={this.props.resetLesson} />
-        </View>
-        )
-    }
+populateEnrolledExercises(responseObject){
+  if (!responseObject.error){
+    console.log(responseObject)
+    this.setState( { userExercises: responseObject.response } )
   }
+  this.filterExercisesByEnrolled()
+}
+
+filterExercisesByEnrolled(){
+  var userExercises = this.state.userExercises;
+  var exercises = this.props.lesson.exercises;
+
+  exercises.forEach((exercise) => {
+    userExercises.forEach((userExercise) => {
+      if(exercise.id === userExercise.id){
+        exercise.enrolled = true;
+      }
+    })
+  })
+
+  this.setState(exercises: exercises)
+}
+
+selectExercise(index) {
+  console.log(this.state.exercises)
+  console.log(index)
+  if (!this.state.exercises[index].enrolled) {
+    const data = {exercise_id: this.state.exercises[index].id}
+
+    this.requester.setItems({url: this.props.url + 'api/subscribed_exercises', data: data, callback: this.getEnrolledExercises})
+  }
+  this.setState({selectedIndex: index})
+}
+
+resetExercise() {
+  this.setState({selectedIndex: null})
+}
+
+previousExercise() {
+  if (this.state.selectedIndex > 0) {
+    this.selectExercise(this.state.selectedIndex - 1)
+  }
+}
+
+nextExercise() {
+  if (this.state.selectedIndex < this.props.lesson.exercises.length-1) {
+    this.selectExercise(this.state.selectedIndex + 1)
+  }
+}
+
+render() {
+
+  const length = this.props.lesson.exercises.length
+  const navigable = length > 1
+  if (this.state.selectedIndex != null) {
+    return (
+        <Exercise length={length} selectedIndex={this.state.selectedIndex} navigable={navigable} item={this.props.lesson.exercises[this.state.selectedIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>
+    )
+  } else {
+    return (
+        <SubComponentMenu name={this.props.lesson.name} selectItem={this.selectExercise} items={this.props.lesson.exercises} reset={this.props.resetLesson} />
+    )
+  }
+}
 
 }

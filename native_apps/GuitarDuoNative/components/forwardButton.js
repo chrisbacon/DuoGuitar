@@ -8,7 +8,7 @@ import {
   Button
 } from 'react-native';
 
-export default class BackButton extends React.Component {
+export default class ForwardButton extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -19,6 +19,6 @@ export default class BackButton extends React.Component {
   }
 
   render() {
-    return <Button title="&larr;" onPress={this.handleClick}>Back</Button>
+    return <Button className="arrowbutton right" title="&rarr;" onPress={this.handleClick}></Button>
   }
 }
