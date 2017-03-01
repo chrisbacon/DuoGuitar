@@ -39,7 +39,6 @@ class Tabber extends React.Component {
       tabColumn: {
         margin: "0",
         padding: "0",
-        border: "1px solid black",
         fontFamily: "cursive",
         display: "flex",
         flexDirection: "column"
@@ -50,7 +49,6 @@ class Tabber extends React.Component {
         display: "block",
         width: "20px",
         height: "20px",
-        border: "1px solid black",
       },
       tabUnitText: {
         margin: "0",
@@ -59,16 +57,15 @@ class Tabber extends React.Component {
         marginTop: "-50%",
         width: "100%",
         height: "100%",
-        border: "1px solid black",
       },
       tabUnitBackground: {
         margin: "0",
         padding: "0",
         display: "block",
-        marginTop: "-105%",
+        backgroundColor: "black",
+        marginTop: "-32%",
         width: "100%",
-        height: "100%",
-        border: "1px solid black",
+        height: "4%",
       }
     }
 
@@ -79,7 +76,7 @@ class Tabber extends React.Component {
       this.tabColumnsArray.forEach((tabColumn) => {
         let renderedTabColumn = []
         tabColumn.forEach((tabUnit) => {
-          renderedTabColumn.push(<div className="tab-unit" style={styles.tabUnit}><div className="tabUnitText" style={styles.tabUnit}>{(tabUnit!=="-") ? tabUnit : "-"}</div><div style={styles.tabUnitBackground} className="tabUnitBackground"></div></div>)
+          renderedTabColumn.push(<div className="tab-unit" style={styles.tabUnit}><div className="tabUnitText" style={styles.tabUnit}>{(tabUnit!=="-") ? tabUnit : " "}</div><div style={styles.tabUnitBackground} className="tabUnitBackground"></div></div>)
         })
         renderedTabArray.push(renderedTabColumn)
       })
