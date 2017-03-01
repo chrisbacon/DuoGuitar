@@ -71,7 +71,7 @@ main {
   width: 220px;
   height: 220px;
   background: rgba( 99, 209, 244,1);
-  border: 1px solid black;
+  border: 0;
   border-radius: 100%;
   margin: 10px 15px 10px 15px;
 }
