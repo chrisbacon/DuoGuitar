@@ -26,6 +26,15 @@ class Requester{
       request.send(null)
     }
   }
+
+  getItems(params){
+    this.makeRequest({codeDesired: 200, url: params.url, type: 'GET', body: '', callback: params.callback})
+  }
+
+  setItems(params){
+    this.makeRequest({codeDesired: 200, url: params.url, type: 'POST', body: '', data: params.data, callback: params.callback})
+  }
+
 }
 
 export default Requester
