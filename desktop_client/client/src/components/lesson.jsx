@@ -84,9 +84,11 @@ class Lesson extends React.Component {
 
   render() {
 
+    const length = this.props.lesson.exercises.length
+    const navigable = length > 1
     if (this.state.selectedIndex != null) {
       return (
-          <Exercise item={this.props.lesson.exercises[this.state.selectedIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>
+          <Exercise length={length} selectedIndex={this.state.selectedIndex} navigable={navigable} item={this.props.lesson.exercises[this.state.selectedIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>
       )
     } else {
       return (

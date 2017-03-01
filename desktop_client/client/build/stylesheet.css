@@ -100,3 +100,22 @@ main {
   display: flex;
   justify-content: space-between;
 }
+
+.progressBar {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  align-items: center;
+}
+
+.progressDot {
+  display: inline-block;
+  background-color: black;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.current {
+  background-color: green;
+}
