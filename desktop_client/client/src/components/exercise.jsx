@@ -18,7 +18,9 @@ class Exercise extends React.Component {
         this.state.media = <iframe src={this.props.item.medium.source} width="500" height="300" frameBorder="5" />
       } else if  (this.props.item.medium.source_type === "image")
       {
-        this.state.media = <img src={this.props.item.medium.source} frameBorder="5" />
+        // const image = require('../../build/images/' + this.props.item.medium.source);
+        this.state.media = <img src={'images/' + this.props.item.medium.source} width="600" height="350" frameBorder="5" />
+
       }
     }
   }

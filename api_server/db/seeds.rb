@@ -168,6 +168,24 @@ Medium.create(
   }
 )
 
+tangos_lesson1_exercise2 = Exercise.create(
+  {
+    name: 'Lesson 1 - Exercise 2',
+    lesson: tangos_lesson1,
+    position: 2,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_lesson1_exercise2,
+    source: "tangos_lesson_1.png",
+    source_type: "image"
+  }
+)
+
+
 tangos_lesson2_exercise1 = Exercise.create(
   {
     name: 'Lesson 2 - Exercise 1',
@@ -185,12 +203,46 @@ Medium.create(
   }
 )
 
+tangos_lesson2_exercise2 = Exercise.create(
+  {
+    name: 'Lesson 2 - Exercise 2',
+    lesson: tangos_lesson2,
+    position: 2,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_lesson2_exercise2,
+    source: "tangos_lesson_2.png",
+    source_type: "image"
+  }
+)
+
 tangos_lesson3_exercise1 = Exercise.create(
   {
     name: 'Lesson 3 - Exercise 1',
     lesson: tangos_lesson3,
     position: 1,
     content: "Bit of content here"
+  }
+)
+
+tangos_lesson3_exercise2 = Exercise.create(
+  {
+    name: 'Lesson 3 - Exercise 2',
+    lesson: tangos_lesson3,
+    position: 2,
+    content: "Bit of content here"
+  }
+)
+
+Medium.create(
+  {
+    exercise: tangos_lesson3_exercise2,
+    source: "tangos_lesson_3.png",
+    source_type: "image"
   }
 )
 
