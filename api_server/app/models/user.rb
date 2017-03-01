@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          has_many :subscribed_courses
          has_many :courses, through: :subscribed_courses, source: :course
+         has_many :lessons, through: :subscribed_lessons, source: :lesson
 end
