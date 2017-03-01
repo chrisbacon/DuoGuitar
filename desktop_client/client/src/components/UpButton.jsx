@@ -12,7 +12,7 @@ class UpButton extends React.Component {
   }
 
   render() {
-    return <button onClick={this.handleClick}>Return</button>
+    return <button className='arrowbutton up' onClick={this.handleClick}>&uarr;</button>
   }
 }
 

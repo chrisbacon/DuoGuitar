@@ -77,7 +77,7 @@ class Lesson extends React.Component {
   }
 
   nextExercise() {
-    if (this.state.selectedIndex < this.props.lesson.exercises.length) {
+    if (this.state.selectedIndex < this.props.lesson.exercises.length-1) {
       this.selectExercise(this.state.selectedIndex + 1)
     }
   }

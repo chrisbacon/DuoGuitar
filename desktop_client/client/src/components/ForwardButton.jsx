@@ -12,7 +12,7 @@ class ForwardButton extends React.Component {
   }
 
   render() {
-    return <span className="glyphicon glyphicon-arrow-right" onClick={this.handleClick}></span>
+    return <button className="arrowbutton right" onClick={this.handleClick}>&rarr;</button>
   }
 }
 

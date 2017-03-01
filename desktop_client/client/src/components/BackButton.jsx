@@ -12,7 +12,7 @@ class BackButton extends React.Component {
   }
 
   render() {
-    return <span className="glyphicon glyphicon-arrow-left" onClick={this.handleClick}></span>
+    return <button className="arrowbutton left" onClick={this.handleClick}>&larr;</button>
   }
 }
 

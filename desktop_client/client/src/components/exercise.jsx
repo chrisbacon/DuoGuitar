@@ -31,7 +31,7 @@ class Exercise extends React.Component {
         <h1>{this.props.item.name}</h1>
         <div className="media-container">{this.state.media}</div>
         <p>{this.props.item.content}</p>
-        <div>
+        <div className= 'arrowbar'>
           <BackButton click={this.props.prev}/>
           <ForwardButton click={this.props.next}/>
 
