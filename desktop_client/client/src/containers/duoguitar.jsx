@@ -11,8 +11,7 @@ class DuoGuitar extends React.Component {
     console.log(this.requester)
 
     this.state = {
-      courses: [],
-      userCourses: [],
+      everything []
       selectedIndex: null
     }
 
