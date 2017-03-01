@@ -9,7 +9,8 @@ class Course extends React.Component {
     this.requester = new Requester()
 
     this.state = {
-      selectedIndex: null
+      selectedIndex: null,
+      lessons: this.props.lessons
     }
 
     this.selectLesson = this.selectLesson.bind(this);
@@ -24,12 +25,12 @@ class Course extends React.Component {
   }
 
   getEnrolledLessons(){
-    console.log(this.props.url)
     this.requester.getItems({url: this.props.url + 'api/subscribed_lessons', callback: this.populateEnrolledLessons})
   }
 
   populateEnrolledLessons(responseObject){
     if (!responseObject.error){
+      console.log(responseObject)
       this.setState( { userLessons: responseObject.response } )
     }
     this.filterLessonsByEnrolled()
@@ -50,13 +51,19 @@ class Course extends React.Component {
     this.setState(lessons: lessons)
   }
 
-
   selectLesson(index) {
+    console.log(this.state.lessons)
+    console.log(index)
+    if (!this.state.lessons[index].enrolled) {
+      const data = {lesson_id: this.state.lessons[index].id}
+
+      this.requester.setItems({url: this.props.url + 'api/subscribed_lessons', data: data, callback: this.getEnrolledLessons})
+    }
     this.setState({selectedIndex: index})
   }
 
   resetLesson() {
-    this.selectLesson(null);
+    this.setState({selectedIndex: null})
   }
 
   render () {
