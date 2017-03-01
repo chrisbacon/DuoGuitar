@@ -41,13 +41,18 @@ class Home extends React.Component {
     if(this.state.currentUser){
       return(
         <div>
-          <nav className='navbar'>
-            <h4> Welcome {this.state.currentUser.email}</h4>
-            <SignOut url={this.props.url + 'users/sign_out.json'} onSignOut={this.setUser}></SignOut>
-          </nav>
-          <DuoGuitar user={this.state.currentUser} url={this.props.url}/>
+
+        <nav className='navbar'>
+          <h4>DuoGuitar</h4>
+            <div id="user-info">
+              <h4> Welcome {this.state.currentUser.email}</h4>
+              <SignOut url={this.props.url + 'users/sign_out.json'} onSignOut={this.setUser}></SignOut>
+            </div>
+        </nav>
+
+        <DuoGuitar user={this.state.currentUser} url={this.props.url}/>
         </div>
-      )
+        )
 
     }
     return <LoginBox setUser={this.setUser} url={this.props.url} />
