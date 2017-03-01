@@ -22,7 +22,7 @@ class DuoGuitar extends React.Component {
   }
 
   componentDidMount() {
-    this.requester.makeRequest({codeDesired: 200, url: this.props.url + 'api/courses', type: 'GET', body: '', callback: this.populateCourses})
+    this.requester.getItems({url: this.props.url + 'api/courses', callback: this.populateCourses})
   }
 
   populateCourses(responseObject){
@@ -33,7 +33,7 @@ class DuoGuitar extends React.Component {
   }
 
   getEnrolledCourses(){
-    this.requester.makeRequest({codeDesired: 200, url: this.props.url + 'api/subscribed_courses', type: 'GET', body: '', callback: this.populateEnrolledCourses})
+    this.requester.getItems({url: this.props.url + 'api/subscribed_courses', callback: this.populateEnrolledCourses})
   }
 
   populateEnrolledCourses(responseObject){
@@ -61,7 +61,8 @@ class DuoGuitar extends React.Component {
   selectCourse(index) {
     if (!this.state.courses[index].enrolled) {
       const data = {course_id: this.state.courses[index].id}
-      this.requester.makeRequest({codeDesired: 200, url: this.props.url + 'api/subscribed_courses', type: 'POST', body: '', data: data, callback: this.getEnrolledCourses})
+
+      this.requester.setItems({url: this.props.url + 'api/subscribed_courses', data: data, callback: this.getEnrolledCourses})
     }
     this.setState({selectedIndex: index})
   }
