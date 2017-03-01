@@ -64,11 +64,11 @@ export default class SignUp extends Component {
     return (
       <View onSubmit={this.signUp} className='login-form'>
         <Text>Email</Text>
-        <TextInput style={styles.input} onChangeText={this.handleOnChangeEmail}/>
+        <TextInput autoCapitalize="none" style={styles.input} onChangeText={this.handleOnChangeEmail}/>
         <Text>Password</Text>
-        <TextInput style={styles.input} onChangeText={this.handleOnChangePassword}/>
+        <TextInput autoCapitalize="none" style={styles.input} onChangeText={this.handleOnChangePassword}/>
         <Text>Confirm password</Text>
-        <TextInput style={styles.input} onChangeText={this.handleOnChangePassConf}/>
+        <TextInput autoCapitalize="none" style={styles.input} onChangeText={this.handleOnChangePassConf}/>
         <Button title="Sign Up" onPress={this.signUp}>Sign Up</Button>
       </View>
     )
@@ -77,7 +77,7 @@ export default class SignUp extends Component {
 
 const styles = StyleSheet.create({
   input: {
-    height: 20,
+    height: 40,
     backgroundColor: 'beige',
   },
 });

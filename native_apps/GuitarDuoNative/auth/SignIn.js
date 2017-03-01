@@ -57,9 +57,9 @@ export default class SignIn extends Component {
     return (
       <View  className='login-form' >
         <Text>Email</Text>
-        <TextInput style={styles.input} onChangeText={this.handleOnChangeEmail}/>
+        <TextInput autoCapitalize="none" style={styles.input} onChangeText={this.handleOnChangeEmail}/>
         <Text>Password</Text>
-        <TextInput style={styles.input} onChangeText={this.handleOnChangePassword}/>
+        <TextInput autoCapitalize="none" style={styles.input} onChangeText={this.handleOnChangePassword}/>
         <Button title="Sign In" onPress={this.signIn}>Sign In</Button>
       </View>
     )
