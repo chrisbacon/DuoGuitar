@@ -17,7 +17,7 @@ class SubComponentMenu extends React.Component {
     if (this.props.items) {
       const items = this.props.items.map(function(item, index) {
         if (item.enrolled === true) {
-          return <button className="button" onClick={this.handleClick} value={index} key={index}>{item.name}</button>
+          return <button className="button enrolled" onClick={this.handleClick} value={index} key={index}>{item.name}</button>
         } else {
           return <button className="button"  onClick={this.handleClick} value={index} key={index}>{item.name}</button>
         }
