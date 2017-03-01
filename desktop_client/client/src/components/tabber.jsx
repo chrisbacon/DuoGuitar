@@ -34,12 +34,14 @@ class Tabber extends React.Component {
   render(){
     const styles = {
       tabContainer: {
-        display: "flex"
+        display: "flex",
+        flexWrap: "wrap"
       },
       tabColumn: {
         margin: "0",
         padding: "0",
-        fontFamily: "cursive",
+        fontFamily: "serif",
+        fontSize: "10px",
         display: "flex",
         flexDirection: "column"
       },
@@ -47,25 +49,25 @@ class Tabber extends React.Component {
         margin: "0",
         padding: "0",
         display: "block",
-        width: "20px",
-        height: "20px",
+        width: "9px",
+        height: "12px",
       },
       tabUnitText: {
         margin: "0",
         padding: "0",
         display: "block",
-        marginTop: "-50%",
+        marginTop: "0%",
         width: "100%",
         height: "100%",
       },
       tabUnitBackground: {
-        margin: "0",
+        // margin: "0",
         padding: "0",
         display: "block",
-        backgroundColor: "black",
-        marginTop: "-32%",
+        backgroundColor: "gray",
+        marginTop: "-70%",
         width: "100%",
-        height: "4%",
+        height: "7%",
       }
     }
 
