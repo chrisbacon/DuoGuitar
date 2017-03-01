@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :courses, defaults: {format: :json}
     resources :subscribed_courses
     resources :subscribed_lessons
+    resources :subscribed_exercises
   end
 
   resources :users
