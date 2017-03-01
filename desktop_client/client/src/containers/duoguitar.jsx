@@ -15,9 +15,11 @@ class DuoGuitar extends React.Component {
     }
 
     this.selectCourse = this.selectCourse.bind(this);
+
     this.populateCourses = this.populateCourses.bind(this);
     this.populateEnrolledCourses = this.populateEnrolledCourses.bind(this);
     this.getEnrolledCourses = this.getEnrolledCourses.bind(this);
+
     this.resetCourse = this.resetCourse.bind(this);
   }
 
@@ -77,7 +79,7 @@ class DuoGuitar extends React.Component {
 
       return(
 
-        <Course name={course.name} lessons={course.lessons} resetCourse={this.resetCourse}/>
+        <Course url={this.props.url} name={course.name} lessons={course.lessons} resetCourse={this.resetCourse}/>
       )
 
     } else {
