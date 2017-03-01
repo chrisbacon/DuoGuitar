@@ -29,14 +29,14 @@ class Exercise extends React.Component {
     this.getMediaType();
     let arrowbar;
     if (this.props.navigable) {
-      arrowbar = 
+      arrowbar =
         <div className= 'arrowbar'>
           <BackButton click={this.props.prev}/>
           <ProgressBar length={this.props.length} selectedIndex={this.props.selectedIndex}/>
           <ForwardButton click={this.props.next}/>
         </div>
     }
-    
+
 
     return (
       <div className="content">
