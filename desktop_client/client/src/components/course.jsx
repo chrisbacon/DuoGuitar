@@ -26,21 +26,18 @@ class Course extends React.Component {
     if (this.state.selectedIndex != null) {
 
       return (
-          <Lesson 
-            lesson={this.props.lessons[this.state.selectedIndex]} resetLesson={this.resetLesson}
+        <Lesson
+          lesson={this.props.lessons[this.state.selectedIndex]} resetLesson={this.resetLesson}
           />
-        )
+      )
 
-  } else {
+    } else {
 
-    return(<div>
-      <SubComponentMenu name={this.props.name} selectItem={this.selectLesson} items={this.props.lessons} reset={this.props.resetCourse}/>
-    </div>)
-    
+      return(<div>
+        <SubComponentMenu name={this.props.name} selectItem={this.selectLesson} items={this.props.lessons} reset={this.props.resetCourse}/>
+      </div>)
+    }
   }
-
-
-}
 }
 
 export default Course;

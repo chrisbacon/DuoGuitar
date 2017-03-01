@@ -27,7 +27,7 @@ class SignUp extends React.Component {
         password_confirmation: this.state.passwordConfirmation
       }
     }
-    this.requester.makeRequest({codeDesired: 201, url: 'http://localhost:5000/users.json', type: 'POST', data: credentials, body: '', callback: this.userSignedUp})
+    this.requester.makeRequest({codeDesired: 201, url: this.props.url, type: 'POST', data: credentials, body: '', callback: this.userSignedUp})
   }
 
   userSignedUp(responseObject){

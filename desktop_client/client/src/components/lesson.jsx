@@ -44,13 +44,13 @@ class Lesson extends React.Component {
         <div>
           <Exercise item={this.props.lesson.exercises[this.state.selectedIndex]} resetExercise={this.resetExercise} prev={this.previousExercise} next={this.nextExercise}/>
         </div>
-        )
+      )
     } else {
       return (
         <div>
-        <SubComponentMenu name={this.props.lesson.name} selectItem={this.selectExercise} items={this.props.lesson.exercises} reset={this.props.resetLesson} />
+          <SubComponentMenu name={this.props.lesson.name} selectItem={this.selectExercise} items={this.props.lesson.exercises} reset={this.props.resetLesson} />
         </div>
-        )
+      )
     }
   }
 

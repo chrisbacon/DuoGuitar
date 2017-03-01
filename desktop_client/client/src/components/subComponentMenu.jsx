@@ -23,14 +23,18 @@ class SubComponentMenu extends React.Component {
         }
       }.bind(this));
 
+      let upButton;
+      if (this.props.reset){
+        upButton = <UpButton reset={this.props.reset} />
+      }
       return (
         <div>
-        <UpButton reset={this.props.reset} />
-        <h1>{this.props.name}</h1>
-        <div>{items}</div>
+          {upButton}
+          <h1>{this.props.name}</h1>
+          <div>{items}</div>
         </div>
 
-        )
+      )
     } else {
       return (<div></div>)
     }

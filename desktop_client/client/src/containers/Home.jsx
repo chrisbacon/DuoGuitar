@@ -10,52 +10,48 @@ class Home extends React.Component {
     super(props)
     this.state = {
       currentUser: null
+    }
+    this.setUser = this.setUser.bind(this);
+    this.requester = new Requester();
+    this.userFetched = this.userFetched.bind(this);
   }
-  this.setUser = this.setUser.bind(this);
-  this.requester = new Requester();
-  this.userFetched = this.userFetched.bind(this);
-}
 
-setUser(user){
-    console.log("user: ", user)
+  setUser(user){
     this.setState({currentUser:user});
-}
+  }
 
-fetchUser(){
-    console.log("fetching user");
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/users.json', type: 'GET', body: '', callback: this.userFetched})
-}
+  fetchUser(){
+    this.requester.makeRequest({codeDesired: 200, url: this.props.url + 'users.json', type: 'GET', body: '', callback: this.userFetched})
+  }
 
-userFetched(responseObject){
+  userFetched(responseObject){
     if (!responseObject.error){
       var receivedUser = responseObject.response;
       this.setUser(receivedUser);
-  } else {
+    } else {
       this.setUser(null);
+    }
   }
-}
 
-componentDidMount(){
+  componentDidMount(){
     this.fetchUser()
-}
+  }
 
-render() {
+  render() {
     if(this.state.currentUser){
-        return(
-            <div>
-                <nav className='navbar'>
-                    <h4> Welcome {this.state.currentUser.email}</h4>
-                    <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
-                </nav>
-                <DuoGuitar user={this.state.currentUser}/>
-            </div>
-        )
+      return(
+        <div>
+          <nav className='navbar'>
+            <h4> Welcome {this.state.currentUser.email}</h4>
+            <SignOut url={this.props.url + 'users/sign_out.json'} onSignOut={this.setUser}></SignOut>
+          </nav>
+          <DuoGuitar user={this.state.currentUser} url={this.props.url}/>
+        </div>
+      )
 
     }
-    return <LoginBox setUser={this.setUser} url="http://localhost:5000/" />
-
-}
-
+    return <LoginBox setUser={this.setUser} url={this.props.url} />
+  }
 }
 
 export default Home;
