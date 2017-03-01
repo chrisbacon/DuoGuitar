@@ -2,11 +2,13 @@ import React from 'react';
 import SubComponentMenu from '../components/subComponentMenu.jsx'
 import Course from '../components/course.jsx'
 import Requester from '../components/requester.jsx'
+import Updater from '../components/updater.jsx'
 
 class DuoGuitar extends React.Component {
   constructor(props) {
     super(props);
-    this.requester = new Requester()
+    this.requester = new Requester();
+    console.log(this.requester)
 
     this.state = {
       courses: [],
@@ -15,47 +17,26 @@ class DuoGuitar extends React.Component {
     }
 
     this.selectCourse = this.selectCourse.bind(this);
-    this.populateCourses = this.populateCourses.bind(this);
-    this.populateEnrolledCourses = this.populateEnrolledCourses.bind(this);
-    this.getEnrolledCourses = this.getEnrolledCourses.bind(this);
     this.resetCourse = this.resetCourse.bind(this);
   }
 
   componentDidMount() {
-    this.requester.getItems({url: this.props.url + 'api/courses', callback: this.populateCourses})
+
+    this.updater = new Updater();
+    console.log(this)
+    console.log(this.updater)
+    console.log(this.updater.everything)
+    this.everything = this.updater.everything.bind(this)
+    this.populateCourses = this.updater.populateCourses.bind(this);
+    this.populateEnrolledCourses = this.updater.populateEnrolledCourses.bind(this);
+    this.getEnrolledCourses = this.updater.getEnrolledCourses.bind(this);
+    this.filterCoursesByEnrolled = this.updater.filterCoursesByEnrolled.bind(this);
+    this.everything(this.props.url);
+
   }
 
-  populateCourses(responseObject){
-    if (!responseObject.error){
-      this.setState( { courses: responseObject.response } )
-    }
-    this.getEnrolledCourses();
-  }
-
-  getEnrolledCourses(){
-    this.requester.getItems({url: this.props.url + 'api/subscribed_courses', callback: this.populateEnrolledCourses})
-  }
-
-  populateEnrolledCourses(responseObject){
-    if (!responseObject.error){
-      this.setState( { userCourses: responseObject.response } )
-    }
-    this.filterCoursesByEnrolled()
-  }
-
-  filterCoursesByEnrolled(){
-    var userCourses = this.state.userCourses;
-    var courses = this.state.courses;
-
-    courses.forEach((course) => {
-      userCourses.forEach((userCourse) => {
-        if(course.id === userCourse.id){
-          course.enrolled = true;
-        }
-      })
-    })
-
-    this.setState(courses: courses)
+  resetCourse() {
+    this.setState({selectedIndex: null})
   }
 
   selectCourse(index) {
@@ -65,10 +46,6 @@ class DuoGuitar extends React.Component {
       this.requester.setItems({url: this.props.url + 'api/subscribed_courses', data: data, callback: this.getEnrolledCourses})
     }
     this.setState({selectedIndex: index})
-  }
-
-  resetCourse() {
-    this.setState({selectedIndex: null})
   }
 
   render () {
