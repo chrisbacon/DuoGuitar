@@ -71,6 +71,7 @@ class Course extends React.Component {
 
       return (
         <Lesson
+          url={this.props.url}
           lesson={this.props.lessons[this.state.selectedIndex]} resetLesson={this.resetLesson}
           />
       )
