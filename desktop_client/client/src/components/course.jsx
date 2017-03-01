@@ -77,9 +77,8 @@ class Course extends React.Component {
 
     } else {
 
-      return(<div>
-        <SubComponentMenu name={this.props.name} selectItem={this.selectLesson} items={this.props.lessons} reset={this.props.resetCourse}/>
-      </div>)
+      return(
+        <SubComponentMenu name={this.props.name} selectItem={this.selectLesson} items={this.props.lessons} reset={this.props.resetCourse}/>)
     }
   }
 }

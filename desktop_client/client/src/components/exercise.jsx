@@ -26,7 +26,7 @@ class Exercise extends React.Component {
     this.getMediaType();
 
     return (
-      <div className="exercise-container">
+      <div className="content">
         <UpButton reset={this.props.resetExercise} />
         <h1>{this.props.item.name}</h1>
         <div className="media-container">{this.state.media}</div>

@@ -5,6 +5,7 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: 'PT Sans', sans-serif;
 }
 
 nav {
@@ -34,22 +35,34 @@ nav {
   justify-content: flex-end;*/
 }
 
+main {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 60%;
+  background-color: lightgray;  
+  border-radius: 2%;
 }
 
 .items-container{
   display: flex;
   flex-wrap: wrap;
   width: 500px;
-  justify-content: space-around;
+  
 }
 
 .button {
-  width: 200px;
-  height: 200px;
-  border: 5px solid tomato;
+  width: 220px;
+  height: 220px;
+  background-color: #63D1F4;
+  border: 3px solid black;
   border-radius: 100%;
+  margin: 10px 15px 10px 15px;
 }

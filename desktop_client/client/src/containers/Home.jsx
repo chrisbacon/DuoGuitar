@@ -51,8 +51,9 @@ class Home extends React.Component {
             </div>
           </div>
         </nav>
-
-        <DuoGuitar user={this.state.currentUser} url={this.props.url}/>
+        <main>
+          <DuoGuitar user={this.state.currentUser} url={this.props.url}/>
+        </main>
         </div>
         )
 
