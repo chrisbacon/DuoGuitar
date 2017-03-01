@@ -58,7 +58,22 @@ class Home extends React.Component {
         )
 
     }
-    return <LoginBox setUser={this.setUser} url={this.props.url} />
+    return(
+      <div>
+
+      <nav>
+        <div className='navbar'>
+          <h4>DuoGuitar</h4>
+          <div id="user-info">
+            <h4> Welcome to DuoGuitar!</h4>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <LoginBox setUser={this.setUser} url={this.props.url} />
+      </main>
+      </div>
+      )
   }
 }
 
