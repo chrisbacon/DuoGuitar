@@ -1,19 +1,19 @@
 import React from 'react';
 
 class BackButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-    handleClick(event) {
-        event.preventDefault()
-        this.props.click()
-    }
+  handleClick(event) {
+    event.preventDefault()
+    this.props.click()
+  }
 
-    render() {
-        return <span className="glyphicon glyphicon-arrow-left" onClick={this.handleClick}></span>
-    }
+  render() {
+    return <button className="arrowbutton left" onClick={this.handleClick}>&larr;</button>
+  }
 }
 
 export default BackButton;

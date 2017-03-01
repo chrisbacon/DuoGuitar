@@ -10,48 +10,63 @@ class DuoGuitar extends React.Component {
 
     this.state = {
       courses: [],
+      userCourses: [],
       selectedIndex: null
     }
 
     this.selectCourse = this.selectCourse.bind(this);
+
     this.populateCourses = this.populateCourses.bind(this);
+    this.populateEnrolledCourses = this.populateEnrolledCourses.bind(this);
+    this.getEnrolledCourses = this.getEnrolledCourses.bind(this);
+
     this.resetCourse = this.resetCourse.bind(this);
   }
 
   componentDidMount() {
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/api/courses', type: 'GET', body: '', callback: this.populateCourses})
+    this.requester.getItems({url: this.props.url + 'api/courses', callback: this.populateCourses})
   }
 
   populateCourses(responseObject){
     if (!responseObject.error){
       this.setState( { courses: responseObject.response } )
     }
+    this.getEnrolledCourses();
+  }
+
+  getEnrolledCourses(){
+    this.requester.getItems({url: this.props.url + 'api/subscribed_courses', callback: this.populateEnrolledCourses})
+  }
+
+  populateEnrolledCourses(responseObject){
+    if (!responseObject.error){
+      this.setState( { userCourses: responseObject.response } )
+    }
     this.filterCoursesByEnrolled()
   }
 
   filterCoursesByEnrolled(){
-    var userCourses = this.props.user.courses;
+    var userCourses = this.state.userCourses;
     var courses = this.state.courses;
-    for(var i=courses.length-1; i>=0; i--) {
-      for (var y=0; y<(userCourses.length); y++){
-        if(courses[i].id === userCourses[y].id){
-          courses[i].enrolled = true;
-        } else {
-          courses[i].enrolled = false;
+
+    courses.forEach((course) => {
+      userCourses.forEach((userCourse) => {
+        if(course.id === userCourse.id){
+          course.enrolled = true;
         }
-      }
-    }
+      })
+    })
+
     this.setState(courses: courses)
   }
 
   selectCourse(index) {
-
     if (!this.state.courses[index].enrolled) {
       const data = {course_id: this.state.courses[index].id}
-      this.requester.makeRequest({codeDesired: 201, url: 'http://localhost:5000/api/subscribed_courses', type: 'POST', body: '', data: data, callback: function() {this.state.courses[index].enrolled = true}.bind(this)})
-    }
-      this.setState({selectedIndex: index})
 
+      this.requester.setItems({url: this.props.url + 'api/subscribed_courses', data: data, callback: this.getEnrolledCourses})
+    }
+    this.setState({selectedIndex: index})
   }
 
   resetCourse() {
@@ -64,19 +79,19 @@ class DuoGuitar extends React.Component {
 
       return(
 
-        <Course name={course.name} lessons={course.lessons} resetCourse={this.resetCourse}/>
-    )
-
-  } else {
-
-    return(
-
-      <SubComponentMenu name="Course List" selectItem={this.selectCourse} items={this.state.courses}/>
-      
+        <Course url={this.props.url} name={course.name} lessons={course.lessons} resetCourse={this.resetCourse}/>
       )
 
+    } else {
+
+      return(
+
+        <SubComponentMenu name="Course List" selectItem={this.selectCourse} items={this.state.courses}/>
+
+      )
+
+    }
   }
-}
 }
 
 export default DuoGuitar;

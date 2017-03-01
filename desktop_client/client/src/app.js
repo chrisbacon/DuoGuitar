@@ -5,7 +5,7 @@ import Home from './containers/Home.jsx';
 
 window.onload = function () {
   ReactDOM.render(
-    <Home/>,
+    <Home url='http://localhost:5000/'/>,
     document.getElementById('app')
   );
 }

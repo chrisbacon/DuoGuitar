@@ -32,13 +32,12 @@ class SignIn extends React.Component {
         password: this.state.password
       }
     }
-    this.requester.makeRequest({codeDesired: 200, url: 'http://localhost:5000/users/sign_in.json', type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
+    this.requester.makeRequest({codeDesired: 200, url: this.props.url, type: 'POST', data: credentials, body: '', callback: this.userSignedIn})
   }
 
   userSignedIn(responseObject){
     if (!responseObject.error){
       let user = responseObject.response;
-      console.log("user from signin api call: ", user)
       this.props.onSignIn(user);
     } else {
       console.log("sign-in failed");
@@ -50,7 +49,7 @@ class SignIn extends React.Component {
       <form  className='login-form' >
         <input type="text" onChange={this.handleOnChangeEmail}  placeholder="Email" />
         <input type="password" onChange={this.handleOnChangePassword}  placeholder="Password" />
-        <button onClick={this.signIn}>  Sign In </button>
+        <button onClick={this.signIn}>Sign In</button>
       </form>
     )
   }

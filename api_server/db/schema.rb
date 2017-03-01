@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227155031) do
+ActiveRecord::Schema.define(version: 20170301093742) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -54,7 +54,29 @@ ActiveRecord::Schema.define(version: 20170227155031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_subscribed_courses_on_course_id"
+    t.index ["user_id", "course_id"], name: "index_subscribed_courses_on_user_id_and_course_id", unique: true
     t.index ["user_id"], name: "index_subscribed_courses_on_user_id"
+  end
+
+  create_table "subscribed_exercises", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "rating"
+    t.index ["exercise_id"], name: "index_subscribed_exercises_on_exercise_id"
+    t.index ["user_id", "exercise_id"], name: "index_subscribed_exercises_on_user_id_and_exercise_id", unique: true
+    t.index ["user_id"], name: "index_subscribed_exercises_on_user_id"
+  end
+
+  create_table "subscribed_lessons", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_subscribed_lessons_on_lesson_id"
+    t.index ["user_id", "lesson_id"], name: "index_subscribed_lessons_on_user_id_and_lesson_id", unique: true
+    t.index ["user_id"], name: "index_subscribed_lessons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

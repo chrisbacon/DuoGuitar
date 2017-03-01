@@ -3,7 +3,6 @@ class Requester{
   }
 
   makeRequest(params){
-    console.log(this)
     var request = new XMLHttpRequest()
     request.open(params.type, params.url)
     request.setRequestHeader('Content-Type', "application/json")
@@ -17,7 +16,7 @@ class Requester{
         }
         params.callback({code: request.status, error: false, response: responseJson})
       } else{
-        console.log("Error")
+        console.log("Error - unexpected API response code")
         params.callback({code: request.status, error: true})
       }
     }
@@ -27,6 +26,15 @@ class Requester{
       request.send(null)
     }
   }
+
+  getItems(params){
+    this.makeRequest({codeDesired: 200, url: params.url, type: 'GET', body: '', callback: params.callback})
+  }
+
+  setItems(params){
+    this.makeRequest({codeDesired: 200, url: params.url, type: 'POST', body: '', data: params.data, callback: params.callback})
+  }
+
 }
 
 export default Requester

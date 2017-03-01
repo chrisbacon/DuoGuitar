@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   scope path: "api" do
     resources :courses, defaults: {format: :json}
     resources :subscribed_courses
+    resources :subscribed_lessons
+    resources :subscribed_exercises
   end
 
   resources :users
