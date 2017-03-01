@@ -9,9 +9,9 @@ class ProgressBar extends React.Component {
         const spans = [];
         for (let i=0; i < this.props.length; i++) {
             if (this.props.selectedIndex === i) {
-                spans.push(<span className='progressDot current'/>)
+                spans.push(<span key = {i} className='progressDot current'/>)
             } else {
-                spans.push(<span className='progressDot'/>)
+                spans.push(<span key = {i}  className='progressDot'/>)
             }
         }
         return (

@@ -48,16 +48,17 @@ main {
   width: 60%;
   background-color: lightgray;  
   border-radius: 2%;
+
 }
 
 .items-container{
   display: flex;
   flex-wrap: wrap;
   width: 500px;
-  
 }
 
 .button {
+  font-size: 20px;
   outline-style:none;
   user-select: none;
   width: 220px;
