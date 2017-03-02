@@ -47,15 +47,19 @@ export default class Home extends Component {
   render() {
     if(this.state.currentUser){
       return(
-        <View>
-          <View className='navbar'>
-            <Text>DuoGuitar</Text>
-            <View id="user-info">
-              <Text> Welcome {this.state.currentUser.email}</Text>
+        <View style={this.props.mainStyle.container}>
+          <View style={this.props.mainStyle.navbar}>
+            <View style={this.props.mainStyle.navbar}>
+            <Text style={{color: "white", fontWeight: 'bold', fontSize: 35}}>DuoGuitar</Text>
+            </View>
+            <View style={this.props.mainStyle.userInfo}>
+
+              <Text style={{color: "white"}}> Welcome {this.state.currentUser.email}</Text>
               <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
+
             </View>
           </View>
-          <View className="main">
+          <View style={this.props.mainStyle.main}>
             <DuoGuitar url={this.props.url} user={this.state.currentUser}></DuoGuitar>
           </View>
         </View>

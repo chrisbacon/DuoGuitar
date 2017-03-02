@@ -25,6 +25,7 @@ export default class SubComponentMenu extends Component {
       const items = this.props.items.map(function(item, index) {
         if (item.enrolled === true) {
           return <Button
+            color="rgba(144,238,144, 1)"
             title={item.name}
             className="enrolled"
             onPress={() => this.handleClick(index)}
@@ -33,6 +34,7 @@ export default class SubComponentMenu extends Component {
           </Button>
         } else {
           return <Button
+            color="rgba( 99, 209, 244,1)"
             title={item.name}
             className="not-enrolled"
             onPress={() => this.handleClick(index)}

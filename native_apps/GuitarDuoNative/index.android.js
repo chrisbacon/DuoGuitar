@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -7,35 +6,21 @@ import {
   View
 } from 'react-native';
 import Home from './containers/home';
+import MainStyle from './stylesheets/mainStyle'
 
 export default class GuitarDuoNative extends Component {
   render() {
+    const mainStyle = MainStyle
     return (
-      <View style={styles.container}>
-        <Home url="http://10.0.2.2:5000/"></Home>
-      </View>
-    );
-  }
+      <View style={mainStyle.container}>
+        <View style={mainStyle.topBar}>
+        </View>
+        <View style={mainStyle.mainContainer}>
+          <Home mainStyle={mainStyle} url="http://10.0.2.2:5000/"></Home>
+        </View>
+    </View>
+);
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+}
 
 AppRegistry.registerComponent('GuitarDuoNative', () => GuitarDuoNative);
