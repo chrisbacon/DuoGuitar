@@ -6,7 +6,8 @@ import {
   Text,
   TextInput,
   View,
-  Button
+  Button,
+  Image
 } from 'react-native';
 
 export default class SignUp extends Component {
