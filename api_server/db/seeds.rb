@@ -329,6 +329,30 @@ Medium.create(
 }
 )
 
+licks2 = Lesson.create(
+{
+  name: 'DragonForce',
+  course: sweetLicks,
+  position: 1
+}
+)
+
+dragons = Exercise.create(
+{
+  name: 'Through The Fire And Flames',
+  lesson: licks2,
+  position: 1,
+  content: "Ridiculously fast, as is everything."
+}
+)
+  Medium.create(
+  {
+    exercise: dragons,
+    source: "E||----------------------------------|--6-------------------------------|breakB||--------------------------6-------|------8---9---6---8-------6-------|breakG||--5---7---8---5---7---8-------7---|----------------------8-------7---|breakD||----5---5---5---5---5---5---5---5-|----5---5---5---5---5---5---5---5-|breakA||----------------------------------|----------------------------------|breakE||----------------------------------|----------------------------------|",
+  source_type: "tab"
+}
+)
+
 #------- END OF WILL'S TAB EXPERIMENT ----------
 
 u1.courses << c1
