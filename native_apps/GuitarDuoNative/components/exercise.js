@@ -7,7 +7,7 @@ import {
   View,
   Image
 } from 'react-native';
-import TabberMaker from './tabberMaker';
+import Tabber from './tabber';
 import UpButton from './upButton';
 import ForwardButton from './forwardButton';
 import BackButton from './backButton';
@@ -38,7 +38,7 @@ class Exercise extends Component {
       } else if (this.props.item.medium.source_type === "tab")
       {
         console.log(this.props.item)
-        this.state.media = <Tabber></Tabber>
+        this.state.media = <Tabber tabString={this.props.item.medium.source}></Tabber>
       }
     }
   }
