@@ -4,6 +4,7 @@ import SubComponentMenu from './subComponentMenu.jsx';
 import ForwardButton from './ForwardButton.jsx';
 import BackButton from './BackButton.jsx';
 import ProgressBar from './ProgressBar.jsx';
+import Tabber from './tabber';
 
 class Exercise extends React.Component {
   constructor(props) {
@@ -21,6 +22,10 @@ class Exercise extends React.Component {
         // const image = require('../../build/images/' + this.props.item.medium.source);
         this.state.media = <img src={'images/' + this.props.item.medium.source} width="600" height="350" frameBorder="5" />
 
+      }  else if (this.props.item.medium.source_type === "tab")
+      {
+        console.log(this.props.item)
+        this.state.media = <Tabber tabString={this.props.item.medium.source}></Tabber>
       }
     }
   }
