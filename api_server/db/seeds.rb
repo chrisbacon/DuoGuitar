@@ -317,7 +317,7 @@ sweetChildSolo = Exercise.create(
   name: 'Sweet Child o\' Mine - solo',
   lesson: licks1,
   position: 2,
-  content: "Buy a big hat and be like Slash"
+  content: "Buy a big hat. Smoke. Be like Slash"
 }
 )
 
