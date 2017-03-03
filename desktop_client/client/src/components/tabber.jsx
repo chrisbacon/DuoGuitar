@@ -94,19 +94,16 @@ class Tabber extends React.Component {
           renderedTabColumn.push(<div className="tab-unit" style={styles.tabUnit}>
 
           {
-
             tabUnit!=="|" ? (
               <div className="tabUnitText" style={styles.tabUnitText}>{
-                  ( tabUnit!=="-" ? (tabUnit) : (" ") )
+                  ( tabUnit!=="-" ? (tabUnit) : null )
                 } </div> )
             : (
               null
             )
-
           }
 
           {
-
             tabUnit==="|" ? (
 
               index === 5 ? (
@@ -115,14 +112,18 @@ class Tabber extends React.Component {
                   <div className="tabUnitVBreak" style={styles.tabUnitVBreak}></div>
                 )
               ) :
-
-              (
-                null
-              )
-
+            (
+              null
+            )
           }
 
+          {
+            (tabUnit === "-" || tabUnit === "|") ? (
             <div style={styles.tabUnitBackground} className="tabUnitBackground"></div>
+            ) : (
+              null
+            )
+          }
 
           </div>)
         })
