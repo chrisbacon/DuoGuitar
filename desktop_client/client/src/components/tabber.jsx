@@ -51,12 +51,14 @@ class Tabber extends React.Component {
         margin: "0",
         padding: "0",
         display: "block",
+        position: "relative",
         width: "9px",
         height: "12px",
       },
       tabUnitText: {
         margin: "0",
         padding: "0",
+        position: "absolute",
         display: "block",
         marginTop: "0%",
         width: "100%",
@@ -64,6 +66,8 @@ class Tabber extends React.Component {
       },
       tabUnitVBreak: {
         width: "10%",
+        position: "absolute",
+        marginTop: "60%",
         height: "100%",
         backgroundColor: "gray",
         padding:0
@@ -72,8 +76,9 @@ class Tabber extends React.Component {
         // margin: "0",
         padding: "0",
         display: "block",
+        position: "absolute",
+        marginTop: "60%",
         backgroundColor: "gray",
-        marginTop: "-70%",
         width: "100%",
         height: "7%",
       }
@@ -85,43 +90,66 @@ class Tabber extends React.Component {
 
       this.tabColumnsArray.forEach((tabColumn) => {
         let renderedTabColumn = []
-        tabColumn.forEach((tabUnit) => {
+        tabColumn.forEach((tabUnit, index) => {
           renderedTabColumn.push(<div className="tab-unit" style={styles.tabUnit}>
 
-          {tabUnit!=="|" ?
-          <div className="tabUnitText" style={styles.tabUnitText}>{
-              (tabUnit!=="-" ? tabUnit : " ")
-            }
-          </div> :
-          <div className="tabUnitVBreak" style={styles.tabUnitVBreak}></div>
+          {
+
+            tabUnit!=="|" ? (
+              <div className="tabUnitText" style={styles.tabUnitText}>{
+                  ( tabUnit!=="-" ? (tabUnit) : (" ") )
+                } </div> )
+            : (
+              null
+            )
+
           }
 
-          <div style={styles.tabUnitBackground} className="tabUnitBackground"></div></div>)
-          })
-          renderedTabArray.push(renderedTabColumn)
+          {
+
+            tabUnit==="|" ? (
+
+              index === 5 ? (
+                  null
+                ) : (
+                  <div className="tabUnitVBreak" style={styles.tabUnitVBreak}></div>
+                )
+              ) :
+
+              (
+                null
+              )
+
+          }
+
+            <div style={styles.tabUnitBackground} className="tabUnitBackground"></div>
+
+          </div>)
         })
+        renderedTabArray.push(renderedTabColumn)
+      })
 
-        const renderedTabColumnsArray = renderedTabArray.map((tabUnit) => {
-          return <div style={styles.tabColumn} className="tabColumn">
-            {tabUnit[0]}
-            {tabUnit[1]}
-            {tabUnit[2]}
-            {tabUnit[3]}
-            {tabUnit[4]}
-            {tabUnit[5]}
-          </div>
-        })
+      const renderedTabColumnsArray = renderedTabArray.map((tabUnit) => {
+        return <div style={styles.tabColumn} className="tabColumn">
+          {tabUnit[0]}
+          {tabUnit[1]}
+          {tabUnit[2]}
+          {tabUnit[3]}
+          {tabUnit[4]}
+          {tabUnit[5]}
+        </div>
+      })
 
-        return(
-          <div style={styles.tabContainer} className="tabContainer">
-            {renderedTabColumnsArray}
-          </div>
-        )
+      return(
+        <div style={styles.tabContainer} className="tabContainer">
+          {renderedTabColumnsArray}
+        </div>
+      )
 
-      } else {
-        return(null)
-      }
+    } else {
+      return(null)
     }
   }
+}
 
-  export default Tabber
+export default Tabber
